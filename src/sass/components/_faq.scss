@@ -3,7 +3,7 @@
   justify-content: center;
   align-items: center;
   width: 100%;
-//   padding: 80px 0 80px 0;
+  //   padding: 80px 0 80px 0;
   &__item {
     display: flex;
     justify-content: space-between;
@@ -11,11 +11,17 @@
     flex-wrap: wrap;
     background-color: white;
     padding: 10px 0px;
-    border-radius: 30px;
+
     cursor: pointer;
+
+    border-bottom: 1px solid $light-gray;
+
     &:focus-visible {
       outline: none;
       box-shadow: none;
+    }
+    &:first-child{
+    border-top: 1px solid $light-gray;
     }
     &:not(:last-child) {
       margin-bottom: 10px;
@@ -161,8 +167,8 @@
 //   }
 // }
 
- @media (max-width: 768px) {
-    .faq {
-        padding: 20px 0px 30px 0px;
-    }
- }
+@media (max-width: 768px) {
+  .faq {
+    padding: 20px 0px 30px 0px;
+  }
+}

@@ -8,10 +8,19 @@
   gap: 20px;
   border-radius: 16px 16px 0px 0px;
   box-shadow: 0px 0px 25px 0px #00000026;
+
+  &--full-height {
+    top: 0;
+    height: 100vh !important;
+    position: absolute;
+  }
 }
+
+  
+
 .point__item.active {
-    display: block;
-    height: 382px;
+  display: block;
+  height: 382px;
 }
 .point__button {
   margin-bottom: 20px !important;
