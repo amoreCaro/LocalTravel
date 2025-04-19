@@ -293,7 +293,7 @@ function setupNavigationWithSlideNumber(nextSelector, prevSelector, itemSelector
   const totalSlides = $items.length;
 
   function updateSlideNumber(index) {
-    $(currentSlideSelector).text(index + 1); // Індекс починається з 0
+    $(currentSlideSelector).text(index + 1); 
   }
 
   $(nextSelector).on('click', function () {
@@ -319,8 +319,6 @@ function setupNavigationWithSlideNumber(nextSelector, prevSelector, itemSelector
   // Початкове значення
   updateSlideNumber($items.index($items.filter('.' + activeClass)));
 }
-
-
 
 document.addEventListener('DOMContentLoaded', function () {
   // headerFixed();
