@@ -1,10 +1,21 @@
+.points {
+  display: flex;
+}
 .point__item {
   padding: 20px;
   background: #fff;
   gap: 20px;
+  border-radius: 16px 16px 0px 0px;
+  box-shadow: 0px 0px 25px 0px #00000026;
+
 }
 .point__button {
   margin-bottom: 20px !important;
 }
-.point__swiper {
+
+@media (max-width: 768px) {
+  .point__item {
+    min-width: 100%;
+    width: 100%;
+  }
 }

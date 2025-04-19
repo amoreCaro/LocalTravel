@@ -3,18 +3,14 @@
   justify-content: center;
   align-items: center;
   width: 100%;
-  padding: 80px 0 80px 0;
-
-  &__list {
-    margin-top: 65px;
-  }
+//   padding: 80px 0 80px 0;
   &__item {
     display: flex;
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
     background-color: white;
-    padding: 10px 10px 10px 30px;
+    padding: 10px 0px;
     border-radius: 30px;
     cursor: pointer;
     &:focus-visible {
@@ -51,18 +47,19 @@
       box-shadow: none;
     }
     .faq__right {
-        display: flex;
-        align-items: center;
+      display: flex;
+      align-items: center;
     }
     .faq__icon {
-    //   background-color: #e2e7f8;
-      border-radius: 20px;
-      height: 60px;
-      width: 60px;
+      height: 30px;
+      width: 30px;
       display: flex;
       justify-content: center;
       align-items: center;
     }
+  }
+  .faq__icon-static {
+    margin-right: 15px;
   }
   &__content {
     width: 100%;
@@ -94,70 +91,78 @@
       transition: 0.3s ease;
       padding: 32px 0;
     }
-    svg {
+    .faq__icon {
+      svg {
         transform: rotate(270deg);
-    }
-  }
-}
-
-@media (max-width: 1024px) {
-  .faq {
-    &__container {
-      padding: 60px 22px 58px 22px;
-    }
-    &__head {
-      h2 {
-        font-size: 32px;
-        line-height: 100%;
-      }
-    }
-    &__list {
-      margin-top: 30px;
-    }
-  }
-}
-
-@media (max-width: 768px) {
-  .faq {
-    padding: 40px 44px;
-    &__container {
-      padding: 60px 40px;
-    }
-    h2 {
-      font-size: 48px;
-      line-height: 48px;
-      text-align: center;
-    }
-
-    &__list {
-      margin-top: 60px;
-    }
-  }
-}
-
-@media (max-width: 465px) {
-  .faq {
-    padding: 40px 18px;
-    &__container {
-      border-radius: 32px;
-      padding: 40px 18px;
-    }
-    h2 {
-      font-size: 1.75rem;
-      line-height: 28px;
-      text-align: center;
-      max-width: 270px;
-      margin: 0 auto;
-      text-align: center;
-    }
-
-    &__list {
-      margin-top: 30px;
-    }
-    .faq__item {
-      span {
-        font-size: 18px;
       }
     }
   }
 }
+
+// @media (max-width: 1024px) {
+//   .faq {
+//     &__container {
+//       padding: 60px 22px 58px 22px;
+//     }
+//     &__head {
+//       h2 {
+//         font-size: 32px;
+//         line-height: 100%;
+//       }
+//     }
+//     &__list {
+//       margin-top: 30px;
+//     }
+//   }
+// }
+
+// @media (max-width: 768px) {
+//   .faq {
+//     padding: 40px 44px;
+//     &__container {
+//       padding: 60px 40px;
+//     }
+//     h2 {
+//       font-size: 48px;
+//       line-height: 48px;
+//       text-align: center;
+//     }
+
+//     &__list {
+//       margin-top: 60px;
+//     }
+//   }
+// }
+
+// @media (max-width: 465px) {
+//   .faq {
+//     padding: 40px 18px;
+//     &__container {
+//       border-radius: 32px;
+//       padding: 40px 18px;
+//     }
+//     h2 {
+//       font-size: 1.75rem;
+//       line-height: 28px;
+//       text-align: center;
+//       max-width: 270px;
+//       margin: 0 auto;
+//       text-align: center;
+//     }
+
+//     &__list {
+//       margin-top: 30px;
+//     }
+//     .faq__item {
+//       span {
+//         font-size: 18px;
+//       }
+//     }
+//   }
+// }
+
+ @media (max-width: 768px) {
+    .faq {
+        padding: 20px 0px 30px 0px;
+    }
+ }
