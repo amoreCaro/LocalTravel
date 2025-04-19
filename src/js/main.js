@@ -271,51 +271,6 @@ function helperCollapse() {
   });
 }
 
-
-function initManualSlider(containerSelector) {
-  const container = document.querySelector(containerSelector);
-  if (!container) return;
-
-  const slides = container.querySelectorAll('.swiper-slide');
-  const prevBtn = container.querySelector('.swiper-button-prev');
-  const nextBtn = container.querySelector('.swiper-button-next');
-  const currentSlideSpan = container.querySelector('#current-slide');
-  const totalSlidesSpan = container.querySelector('#total-slides');
-
-  let currentSlide = 0;
-  const totalSlides = slides.length;
-
-  totalSlidesSpan.textContent = totalSlides;
-
-  function showSlide(index) {
-    slides.forEach((slide, i) => {
-      slide.style.display = i === index ? 'block' : 'none';
-    });
-
-    currentSlideSpan.textContent = index + 1;
-
-    prevBtn.disabled = index === 0;
-    nextBtn.disabled = index === totalSlides - 1;
-  }
-
-  prevBtn.addEventListener('click', () => {
-    if (currentSlide > 0) {
-      currentSlide--;
-      showSlide(currentSlide);
-    }
-  });
-
-  nextBtn.addEventListener('click', () => {
-    if (currentSlide < totalSlides - 1) {
-      currentSlide++;
-      showSlide(currentSlide);
-    }
-  });
-
-  showSlide(currentSlide);
-}
-
-
 document.addEventListener('DOMContentLoaded', () => {
   initManualSlider('.point__slider');
 });
@@ -333,6 +288,40 @@ function initMap() {
   });
 }
 
+function setupNavigationWithSlideNumber(nextSelector, prevSelector, itemSelector, activeClass, currentSlideSelector) {
+  const $items = $(itemSelector);
+  const totalSlides = $items.length;
+
+  function updateSlideNumber(index) {
+    $(currentSlideSelector).text(index + 1); // Індекс починається з 0
+  }
+
+  $(nextSelector).on('click', function () {
+    let $current = $items.filter('.' + activeClass);
+    let $next = $current.next(itemSelector);
+    if ($next.length) {
+      $current.removeClass(activeClass);
+      $next.addClass(activeClass);
+      updateSlideNumber($items.index($next));
+    }
+  });
+
+  $(prevSelector).on('click', function () {
+    let $current = $items.filter('.' + activeClass);
+    let $prev = $current.prev(itemSelector);
+    if ($prev.length) {
+      $current.removeClass(activeClass);
+      $prev.addClass(activeClass);
+      updateSlideNumber($items.index($prev));
+    }
+  });
+
+  // Початкове значення
+  updateSlideNumber($items.index($items.filter('.' + activeClass)));
+}
+
+
+
 document.addEventListener('DOMContentLoaded', function () {
   // headerFixed();
   // headerMobile();
@@ -344,6 +333,6 @@ document.addEventListener('DOMContentLoaded', function () {
   funcyboxInit();
   faq();
   helperCollapse();
-  initManualSlider();
   initMap();
+  setupNavigationWithSlideNumber('#nextBtn', '#prevBtn', '.point__item', 'active', '.current-slide');
 });
