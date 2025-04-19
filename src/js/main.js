@@ -291,17 +291,25 @@ function initManualSlider(containerSelector) {
     slides.forEach((slide, i) => {
       slide.style.display = i === index ? 'block' : 'none';
     });
+
     currentSlideSpan.textContent = index + 1;
+
+    prevBtn.disabled = index === 0;
+    nextBtn.disabled = index === totalSlides - 1;
   }
 
   prevBtn.addEventListener('click', () => {
-    currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
-    showSlide(currentSlide);
+    if (currentSlide > 0) {
+      currentSlide--;
+      showSlide(currentSlide);
+    }
   });
 
   nextBtn.addEventListener('click', () => {
-    currentSlide = (currentSlide + 1) % totalSlides;
-    showSlide(currentSlide);
+    if (currentSlide < totalSlides - 1) {
+      currentSlide++;
+      showSlide(currentSlide);
+    }
   });
 
   showSlide(currentSlide);
@@ -334,7 +342,6 @@ document.addEventListener('DOMContentLoaded', function () {
   tabs();
   accordion();
   funcyboxInit();
-
   faq();
   helperCollapse();
   initManualSlider();
