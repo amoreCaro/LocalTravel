@@ -3,7 +3,6 @@
   justify-content: center;
   align-items: center;
   text-align: center;
-  //   border: none;
   text-decoration: none;
   height: 50px;
   padding: 10px;
@@ -33,16 +32,5 @@
   span {
     color: white;
     font-weight: 400;
-  }
-}
-
-@media (max-width: 768px) {
-  .btn {
-    padding: 0px 28px;
-    height: 60px;
-    width: 100%;
-    span {
-      font-size: 1rem;
-    }
   }
 }

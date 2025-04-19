@@ -227,132 +227,6 @@ function sliderSwipers() {
   }
 }
 
-function creditCalculator() {
-  const creditSection = document.querySelector('.credit');
-
-  if (!creditSection) return;
-
-  const creditRange = document.getElementById('credit_amount_range');
-  const creditDisplay = document.getElementById('credit_amount');
-  const termRange = document.getElementById('term_range');
-  const termDisplay = document.getElementById('term_amount');
-  const termButtons = document.querySelectorAll('.term__button');
-  const creditSubmit = document.getElementById('creditSubmit');
-
-  const finalAmountUAH = document.querySelector('.final-amount-uah');
-  const finalAmountMonth = document.querySelector('.final-amount-month');
-  const finalAmountCosts = document.querySelector('.final-amount-costs');
-
-  const minCredit = parseInt(creditRange.min, 10);
-  const maxCredit = parseInt(creditRange.max, 10);
-  const allowedTerms = [6, 12, 24];
-  let selectedTerm = 6; // Фіксуємо стандартний термін
-
-  function getMonthLabel(value) {
-    if (value === 1) return "місяць";
-    if (value > 1 && value < 5) return "місяці";
-    return "місяців";
-  }
-
-  function updateCreditValue(value) {
-    creditRange.value = value;
-    creditDisplay.value = `${value} грн`;
-    updateFinalAmounts();
-  }
-
-  function updateRangeStyle(rangeInput) {
-    const percentage = ((rangeInput.value - rangeInput.min) / (rangeInput.max - rangeInput.min)) * 100;
-    rangeInput.style.setProperty('--value', `${percentage}%`);
-  }
-
-  function updateTermValue(value) {
-    if (!allowedTerms.includes(value)) return;
-    selectedTerm = value;
-
-    termRange.value = value;
-    termDisplay.value = `${value} ${getMonthLabel(value)}`;
-    updateRangeStyle(termRange);
-    
-    termButtons.forEach(btn => btn.classList.remove('active'));
-    const activeButton = document.querySelector(`.term__button[value="${value}"]`);
-    if (activeButton) activeButton.classList.add('active');
-
-    updateFinalAmounts();
-  }
-
-  function snapToAllowedTerm(value) {
-    return allowedTerms.reduce((prev, curr) => Math.abs(curr - value) < Math.abs(prev - value) ? curr : prev);
-  }
-
-  function updateFinalAmounts() {
-    let totalAmount = parseInt(creditRange.value, 10);
-    let term = selectedTerm;
-    let oneTimeFee = 1380;
-    let monthlyInterestRate = 0.00000833;
-    let monthlyFee = ((totalAmount + oneTimeFee) * 0.069 + Number.EPSILON) * 100 / 100;
-    let initialDebt = totalAmount + oneTimeFee;
-    let annuityPayment = (initialDebt * monthlyInterestRate) / (1 - Math.pow(1 + monthlyInterestRate, -term))* 100 / 100;
-    let totalMonthlyPayment = ((annuityPayment + monthlyFee) * 100) / 100;
-    let totalCreditCost = totalMonthlyPayment * term;
-    let totalLoanExpenses = totalCreditCost - totalAmount;
-
-    finalAmountUAH.textContent = `${parseFloat(totalCreditCost).toFixed(2)} грн`;
-    finalAmountMonth.textContent = `${parseFloat(annuityPayment).toFixed(2)} грн/міс`;
-    finalAmountCosts.textContent = `${parseFloat(totalLoanExpenses).toFixed(2)} грн`;
-  }
-
-  function handleCreditSubmit() {
-    const form = document.querySelector('.credit__form');
-    const totalAmount = finalAmountUAH.textContent;
-    const monthlyPayment = finalAmountMonth.textContent;
-    const totalCosts = finalAmountCosts.textContent;
-    const totalCredit = document.querySelector('#credit_amount').value;
-
-    const calculatorData = {
-      amount: totalCredit,
-      term: selectedTerm
-    };
-
-    localStorage.setItem("calculator", JSON.stringify(calculatorData));
-
-    form.submit();
-    //alert(`Кредит оформлено:\nЗагальна сума: ${totalAmount}\nЩомісячний платіж: ${monthlyPayment}\nЗагальні витрати: ${totalCosts}\nСума кредиту: ${totalCredit}\nТермін: ${selectedTerm} ${getMonthLabel(selectedTerm)}`);
-  }
-
-  if (creditSubmit) creditSubmit.addEventListener('click', handleCreditSubmit);
-
-  creditRange.addEventListener('input', (e) => {
-    updateCreditValue(e.target.value);
-    updateRangeStyle(creditRange);
-  });
-
-  creditDisplay.addEventListener('input', () => {
-    setTimeout(() => {
-      let value = parseInt(creditDisplay.value.replace(/\D/g, ''), 10) || minCredit;
-      value = Math.min(Math.max(value, minCredit), maxCredit);
-      updateCreditValue(value);
-      updateRangeStyle(creditRange);
-    }, 1000);
-  });
-
-  termRange.addEventListener('input', (e) => {
-    const snappedValue = snapToAllowedTerm(parseInt(e.target.value, 10));
-    updateTermValue(snappedValue);
-  });
-
-  termButtons.forEach(button => {
-    button.addEventListener('click', (e) => {
-      e.preventDefault();
-      updateTermValue(parseInt(button.value, 10));
-    });
-  });
-
-  updateCreditValue(creditRange.value);
-  updateTermValue(selectedTerm);
-  updateRangeStyle(creditRange);
-  updateRangeStyle(termRange);
-  updateFinalAmounts();
-}
 
 function fadeInSections() {
   const sections = document.querySelectorAll('.animate-fade');
@@ -398,6 +272,47 @@ function helperCollapse() {
 }
 
 
+function initManualSlider(containerSelector) {
+  const container = document.querySelector(containerSelector);
+  if (!container) return;
+
+  const slides = container.querySelectorAll('.swiper-slide');
+  const prevBtn = container.querySelector('.swiper-button-prev');
+  const nextBtn = container.querySelector('.swiper-button-next');
+  const currentSlideSpan = container.querySelector('#current-slide');
+  const totalSlidesSpan = container.querySelector('#total-slides');
+
+  let currentSlide = 0;
+  const totalSlides = slides.length;
+
+  totalSlidesSpan.textContent = totalSlides;
+
+  function showSlide(index) {
+    slides.forEach((slide, i) => {
+      slide.style.display = i === index ? 'block' : 'none';
+    });
+    currentSlideSpan.textContent = index + 1;
+  }
+
+  prevBtn.addEventListener('click', () => {
+    currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+    showSlide(currentSlide);
+  });
+
+  nextBtn.addEventListener('click', () => {
+    currentSlide = (currentSlide + 1) % totalSlides;
+    showSlide(currentSlide);
+  });
+
+  showSlide(currentSlide);
+}
+
+// Викликати функцію, передавши селектор контейнера
+document.addEventListener('DOMContentLoaded', () => {
+  initManualSlider('.point__slider');
+});
+
+
 document.addEventListener('DOMContentLoaded', function () {
   headerFixed();
   headerMobile();
@@ -410,4 +325,5 @@ document.addEventListener('DOMContentLoaded', function () {
   creditCalculator();
   faq();
   helperCollapse();
+  initManualSlider();
 });
