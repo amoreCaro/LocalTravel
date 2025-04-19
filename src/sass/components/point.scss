@@ -2,12 +2,16 @@
   display: flex;
 }
 .point__item {
+  display: none;
   padding: 20px;
   background: #fff;
   gap: 20px;
   border-radius: 16px 16px 0px 0px;
   box-shadow: 0px 0px 25px 0px #00000026;
-
+}
+.point__item.active {
+    display: block;
+    height: 382px;
 }
 .point__button {
   margin-bottom: 20px !important;
