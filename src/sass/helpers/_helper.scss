@@ -180,6 +180,7 @@
 #map {
   height: 40vh;
   width: 100%;
+  pointer-events: none;
 }
 
 @media (max-width: 768px) {
