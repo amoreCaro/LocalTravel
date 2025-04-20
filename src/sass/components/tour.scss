@@ -17,7 +17,7 @@
     }
   }
 
-  &__text p {    
+  &__text p {
     font-weight: 500;
     font-size: 20px;
     line-height: 120%;
@@ -60,23 +60,25 @@
 }
 
 .slider {
-  overflow: hidden; // make sure Swiper handles scroll
+  overflow: hidden;
   height: 150px;
   margin-bottom: 20px;
 
   &__wrapper {
     display: flex;
-
   }
 
   &__slide {
-    width: auto; // important for slidesPerView: 'auto'
+    width: auto;
     flex-shrink: 0;
     max-width: 208px;
     height: 118px;
   }
 
   &__image {
+    max-width: 208px;
+    width: 100%;
+    height: 118px;
     margin-bottom: 10px;
     img {
       width: 100%;
@@ -87,9 +89,11 @@
   }
 
   &__text {
+    font-weight: 400;
     font-size: 16px;
     line-height: 120%;
     color: #0e121a;
+    letter-spacing: 0;
   }
 
   &__icon {
@@ -102,4 +106,3 @@
     margin-top: 10px;
   }
 }
-
