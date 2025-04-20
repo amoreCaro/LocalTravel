@@ -59,20 +59,19 @@
 }
 
 .slider {
-  display: flex;
-  flex-direction: row;
-  gap: 20px;
+  overflow: hidden; // make sure Swiper handles scroll
   height: 150px;
   margin-bottom: 20px;
 
   &__wrapper {
     display: flex;
-    gap: 20px;
+
   }
 
   &__slide {
+    width: auto; // important for slidesPerView: 'auto'
+    flex-shrink: 0;
     max-width: 208px;
-    width: 100%;
     height: 118px;
   }
 
@@ -87,18 +86,19 @@
   }
 
   &__text {
-    font-weight: 400;
     font-size: 16px;
     line-height: 120%;
     color: #0e121a;
-    letter-spacing: 0px;
   }
+
   &__icon {
     position: absolute;
     top: 10px;
     right: 10px;
   }
+
   &__pagination {
     margin-top: 10px;
   }
 }
+

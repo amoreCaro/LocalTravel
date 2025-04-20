@@ -324,10 +324,6 @@ function helperCollapse() {
   });
 }
 
-// document.addEventListener('DOMContentLoaded', () => {
-//   initManualSlider('.point__slider');
-// });
-
 function initMap() {
   const location = { lat: 49.8397, lng: 24.0297 };
   const map = new google.maps.Map(document.getElementById("map"), {
@@ -369,9 +365,21 @@ function setupNavigationWithSlideNumber(nextSelector, prevSelector, itemSelector
     }
   });
 
-  // Початкове значення
   updateSlideNumber($items.index($items.filter('.' + activeClass)));
 }
+
+const pointSlider = new Swiper('.point__slider', {
+  slidesPerView: 'auto',
+  spaceBetween: 16,
+  freeMode: true,
+  scrollbar: {
+    el: '.swiper-scrollbar',
+    draggable: true,
+  },
+  mousewheel: {
+    forceToAxis: true,
+  },
+});
 
 document.addEventListener('DOMContentLoaded', function () {
   // headerFixed();
