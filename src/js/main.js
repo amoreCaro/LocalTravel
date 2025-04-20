@@ -36,7 +36,7 @@
 //       header.classList.remove("header-fixed");
 //     }
 //   });
-   
+
 //   links.forEach(link => {
 //       link.addEventListener("click", function (event) {
 //           event.preventDefault();
@@ -52,18 +52,71 @@
 //           }
 //       });
 //   });
- 
+
 // }
 
-function funcyboxInit() {
-  const documents = document.querySelector('.accordion');
-  if (!documents) return
+// function funcyboxInit() {
+//   const documents = document.querySelector('.accordion');
+//   if (!documents) return
 
-  const fancyboxElements = documents.querySelectorAll('.accordion__content__item[data-fancybox]');
-  if (fancyboxElements.length > 0) {
-    Fancybox.bind("[data-fancybox]", {});
+//   const fancyboxElements = documents.querySelectorAll('.accordion__content__item[data-fancybox]');
+//   if (fancyboxElements.length > 0) {
+//     Fancybox.bind("[data-fancybox]", {});
+//   }
+// }
+
+
+function fancyboxInit() {
+  // Check if the slider exists
+  const slider = document.querySelector('.point__slider');
+  if (!slider) return;
+
+  // Select all elements with data-fancybox="gallery"
+  const fancyboxLinks = slider.querySelectorAll('[data-fancybox="gallery"]');
+  if (fancyboxLinks.length > 0) {
+    Fancybox.bind(fancyboxLinks, {
+      loop: true,
+      // Disable the ability to open fancybox by clicking on the image
+      click: 'false',  // This will prevent Fancybox from opening when the image is clicked directly
+    });
   }
+
+  // Add event listeners to slider icons
+  const icons = slider.querySelectorAll('.slider__icon');
+  icons.forEach((icon, index) => {
+    icon.addEventListener('click', () => {
+      // Find the associated <a> element and trigger a click on it
+      const correspondingLink = fancyboxLinks[index];
+      correspondingLink.click();
+    });
+  });
 }
+
+// function fancyboxInit() {
+//   // Check if the slider exists
+//   const slider = document.querySelector('.point__slider');
+//   if (!slider) return;
+
+//   // Select all elements with data-fancybox="gallery"
+//   const fancyboxLinks = slider.querySelectorAll('[data-fancybox="gallery"]');
+//   if (fancyboxLinks.length > 0) {
+//     Fancybox.bind(fancyboxLinks, {
+//       loop: true,
+//     });
+//   }
+
+//   // Add event listeners to slider icons
+//   const icons = slider.querySelectorAll('.slider__icon');
+//   icons.forEach((icon, index) => {
+//     icon.addEventListener('click', () => {
+//       // Find the associated <a> element and trigger a click on it
+//       const correspondingLink = slider.querySelectorAll('[data-fancybox="gallery"]')[index];
+//       correspondingLink.click();
+//     });
+//   });
+// }
+
+
 
 function accordion() {
   const accordion = document.querySelector('.accordion');
@@ -89,23 +142,23 @@ function faq() {
   const accordion = document.querySelector('.faq');
   if (!accordion) return
 
-    document.querySelectorAll('.faq__head').forEach(item => {
-      if (!item.classList.contains('faq__head--link')) {
-        item.addEventListener('click', function () {
-          const parent = this.parentElement;
-          const isActive = parent.classList.contains("active");
+  document.querySelectorAll('.faq__head').forEach(item => {
+    if (!item.classList.contains('faq__head--link')) {
+      item.addEventListener('click', function () {
+        const parent = this.parentElement;
+        const isActive = parent.classList.contains("active");
 
-          document.querySelectorAll(".faq__item").forEach(item => {
-            item.classList.remove("active");
-          });
-
-          if (!isActive) {
-            parent.classList.add("active");
-          }
+        document.querySelectorAll(".faq__item").forEach(item => {
+          item.classList.remove("active");
         });
-      }
-    });
-  
+
+        if (!isActive) {
+          parent.classList.add("active");
+        }
+      });
+    }
+  });
+
 }
 
 // function headerMenu() {
@@ -198,7 +251,7 @@ function sliderSwipers() {
     });
 
   }
-  if(document.querySelector('.article__slider')){
+  if (document.querySelector('.article__slider')) {
     new Swiper('.article__slider', {
       slidesPerView: 3,
       loopAdditionalSlides: 3,
@@ -233,10 +286,10 @@ function fadeInSections() {
 
   function checkFadeIn() {
     const windowHeight = window.innerHeight;
-    
+
     sections.forEach(section => {
       const rect = section.getBoundingClientRect();
-      if (rect.top < windowHeight - 50) { 
+      if (rect.top < windowHeight - 50) {
         section.style.opacity = '1';
         section.style.transition = 'opacity 0.6s ease-out';
       }
@@ -276,7 +329,7 @@ function helperCollapse() {
 // });
 
 function initMap() {
-  const location = { lat: 49.8397, lng: 24.0297 }; 
+  const location = { lat: 49.8397, lng: 24.0297 };
   const map = new google.maps.Map(document.getElementById("map"), {
     center: location,
     zoom: 13,
@@ -293,7 +346,7 @@ function setupNavigationWithSlideNumber(nextSelector, prevSelector, itemSelector
   const totalSlides = $items.length;
 
   function updateSlideNumber(index) {
-    $(currentSlideSelector).text(index + 1); 
+    $(currentSlideSelector).text(index + 1);
   }
 
   $(nextSelector).on('click', function () {
@@ -328,7 +381,7 @@ document.addEventListener('DOMContentLoaded', function () {
   sliderSwipers();
   // tabs();
   accordion();
-  funcyboxInit();
+  fancyboxInit();
   faq();
   helperCollapse();
   initMap();
