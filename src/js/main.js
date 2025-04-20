@@ -135,7 +135,7 @@ function fancyboxInit() {
 
   const icons = slider.querySelectorAll('.slider__icon a');
 
-  // Gather all image links and captions into an array
+  // Збираємо всі посилання на зображення та підписи в масив
   const fancyboxItems = Array.from(icons).map((icon) => ({
     src: icon.getAttribute('href'),
     caption: icon.getAttribute('data-caption'),
@@ -144,27 +144,28 @@ function fancyboxInit() {
 
   icons.forEach((icon, index) => {
     icon.addEventListener('click', (e) => {
-      e.preventDefault(); 
+      e.preventDefault(); // Запобігаємо стандартному поведінці
+
       Fancybox.show(fancyboxItems, {
         startIndex: index,
-        loop: true,
-        Toolbar: {
-          display: [
-            "close",
-            "zoom",
-            "slideshow",
-            "fullscreen",
-            "download",
-            "thumbs"
-          ],
-        },
-        Thumbs: {
-          autoStart: true,
+        loop: true, // Увімкнути цикл
+        buttons: [
+          "zoom",        // Кнопка масштабування
+          "slideShow",   // Кнопка слайд-шоу
+          "fullScreen",  // Кнопка на весь екран
+          "download",    // Кнопка для завантаження
+          "thumbs",      // Кнопка для мініатюр
+          "close"        // Кнопка для закриття
+        ],
+        thumbs: {
+          autoStart: true, // Автоматично показувати мініатюри
         },
       });
     });
   });
 }
+
+
 
 function sliderSwipers() {
   const label = document.querySelector('.hero__label');
