@@ -30,6 +30,9 @@
   gap: 12px;
   max-width: 130px;
   width: 100%;
+  &:hover {
+    background-color:rgb(243, 238, 238);
+  }
 }
 .btn-primary {
   span {
