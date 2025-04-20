@@ -1,29 +1,38 @@
+@use "../helpers/variables" as vars;
 .tour {
   &__point {
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    padding: 10px 0px;
+    border-bottom: 1px solid #e2e2e2;
+    &:first-child {
+        border-top: 1px solid #e2e2e2;
+    }
   }
   &__text p {
     font-weight: 500;
     font-size: 20px;
     line-height: 120%;
-    // color: $black;
+    color: #0e121a;
   }
+
   &__stats {
     display: flex;
+    align-items: center;
+    justify-content: space-between;
     span {
       font-weight: 600;
       font-size: 14px;
       line-height: 120%;
       letter-spacing: -0.5px;
-    //   color: $black;
+      color: #0e121a;
     }
     ul {
       font-weight: 400;
       font-size: 14px;
       line-height: 120%;
       letter-spacing: -0.5px;
-    //   color: $text;
     }
   }
 

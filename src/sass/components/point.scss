@@ -10,14 +10,15 @@
   box-shadow: 0px 0px 25px 0px #00000026;
 
   &--full-height {
-    top: 0;
-    height: 100vh !important;
     position: absolute;
+    height: 100vh !important;
+    padding-top: 90px;
+    top: 0;
   }
 }
-
-  
-
+.point__heading {
+    margin-bottom: 20px;
+}
 .point__item.active {
   display: block;
   height: 382px;

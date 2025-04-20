@@ -1,23 +1,23 @@
-function tabs() {
-  const tabs = document.querySelector('.document__tabs');
-  if (!tabs) return;
+// function tabs() {
+//   const tabs = document.querySelector('.document__tabs');
+//   if (!tabs) return;
 
-  const tabHeaders = tabs.querySelectorAll('.document__head__item');
-  const tabContents = tabs.querySelectorAll('.document__tabs__item');
+//   const tabHeaders = tabs.querySelectorAll('.document__head__item');
+//   const tabContents = tabs.querySelectorAll('.document__tabs__item');
 
-  tabHeaders.forEach(header => {
-    header.addEventListener('click', function () {
-      const targetId = this.getAttribute('data-id');
-      tabHeaders.forEach(h => h.classList.remove('active'));
-      this.classList.add('active');
-      tabContents.forEach(content => content.classList.remove('active'));
-      const targetContent = document.getElementById(targetId);
-      if (targetContent) {
-        targetContent.classList.add('active');
-      }
-    });
-  });
-}
+//   tabHeaders.forEach(header => {
+//     header.addEventListener('click', function () {
+//       const targetId = this.getAttribute('data-id');
+//       tabHeaders.forEach(h => h.classList.remove('active'));
+//       this.classList.add('active');
+//       tabContents.forEach(content => content.classList.remove('active'));
+//       const targetContent = document.getElementById(targetId);
+//       if (targetContent) {
+//         targetContent.classList.add('active');
+//       }
+//     });
+//   });
+// }
 
 // function headerFixed(){
 //   const header = document.querySelector(".header");
@@ -271,9 +271,9 @@ function helperCollapse() {
   });
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-  initManualSlider('.point__slider');
-});
+// document.addEventListener('DOMContentLoaded', () => {
+//   initManualSlider('.point__slider');
+// });
 
 function initMap() {
   const location = { lat: 49.8397, lng: 24.0297 }; 
@@ -326,7 +326,7 @@ document.addEventListener('DOMContentLoaded', function () {
   fadeInSections();
   // headerMenu();
   sliderSwipers();
-  tabs();
+  // tabs();
   accordion();
   funcyboxInit();
   faq();
