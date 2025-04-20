@@ -20,6 +20,9 @@
 .btn-icon {
   max-width: 50px;
   width: 100%;
+  &:hover {
+    background-color: $primary;
+  }
 }
 
 .btn-with-icon {
