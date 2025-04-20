@@ -66,31 +66,6 @@
 // }
 
 
-function fancyboxInit() {
-  // Check if the slider exists
-  const slider = document.querySelector('.point__slider');
-  if (!slider) return;
-
-  // Select all elements with data-fancybox="gallery"
-  const fancyboxLinks = slider.querySelectorAll('[data-fancybox="gallery"]');
-  if (fancyboxLinks.length > 0) {
-    Fancybox.bind(fancyboxLinks, {
-      loop: true,
-      // Disable the ability to open fancybox by clicking on the image
-      click: 'false',  // This will prevent Fancybox from opening when the image is clicked directly
-    });
-  }
-
-  // Add event listeners to slider icons
-  const icons = slider.querySelectorAll('.slider__icon');
-  icons.forEach((icon, index) => {
-    icon.addEventListener('click', () => {
-      // Find the associated <a> element and trigger a click on it
-      const correspondingLink = fancyboxLinks[index];
-      correspondingLink.click();
-    });
-  });
-}
 
 // function fancyboxInit() {
 //   // Check if the slider exists
@@ -115,51 +90,6 @@ function fancyboxInit() {
 //     });
 //   });
 // }
-
-
-
-function accordion() {
-  const accordion = document.querySelector('.accordion');
-  if (!accordion) return
-
-  document.querySelectorAll('.accordion__header').forEach(item => {
-    item.addEventListener('click', function () {
-      const parent = this.parentElement;
-      const isActive = parent.classList.contains("active");
-
-      document.querySelectorAll(".accordion__item").forEach(item => {
-        item.classList.remove("active");
-      });
-
-      if (!isActive) {
-        parent.classList.add("active");
-      }
-    });
-  });
-}
-
-function faq() {
-  const accordion = document.querySelector('.faq');
-  if (!accordion) return
-
-  document.querySelectorAll('.faq__head').forEach(item => {
-    if (!item.classList.contains('faq__head--link')) {
-      item.addEventListener('click', function () {
-        const parent = this.parentElement;
-        const isActive = parent.classList.contains("active");
-
-        document.querySelectorAll(".faq__item").forEach(item => {
-          item.classList.remove("active");
-        });
-
-        if (!isActive) {
-          parent.classList.add("active");
-        }
-      });
-    }
-  });
-
-}
 
 // function headerMenu() {
 //   const btnMenu = document.querySelector('.header__button-menu');
@@ -199,6 +129,42 @@ function faq() {
 //     document.querySelector('.header__wrapper').classList.remove('active');
 //   });
 // }
+function fancyboxInit() {
+  const slider = document.querySelector('.point__slider');
+  if (!slider) return;
+
+  const icons = slider.querySelectorAll('.slider__icon a');
+
+  // Gather all image links and captions into an array
+  const fancyboxItems = Array.from(icons).map((icon) => ({
+    src: icon.getAttribute('href'),
+    caption: icon.getAttribute('data-caption'),
+    type: 'image',
+  }));
+
+  icons.forEach((icon, index) => {
+    icon.addEventListener('click', (e) => {
+      e.preventDefault(); 
+      Fancybox.show(fancyboxItems, {
+        startIndex: index,
+        loop: true,
+        Toolbar: {
+          display: [
+            "close",
+            "zoom",
+            "slideshow",
+            "fullscreen",
+            "download",
+            "thumbs"
+          ],
+        },
+        Thumbs: {
+          autoStart: true,
+        },
+      });
+    });
+  });
+}
 
 function sliderSwipers() {
   const label = document.querySelector('.hero__label');
@@ -280,6 +246,48 @@ function sliderSwipers() {
   }
 }
 
+function accordion() {
+  const accordion = document.querySelector('.accordion');
+  if (!accordion) return
+
+  document.querySelectorAll('.accordion__header').forEach(item => {
+    item.addEventListener('click', function () {
+      const parent = this.parentElement;
+      const isActive = parent.classList.contains("active");
+
+      document.querySelectorAll(".accordion__item").forEach(item => {
+        item.classList.remove("active");
+      });
+
+      if (!isActive) {
+        parent.classList.add("active");
+      }
+    });
+  });
+}
+
+function faq() {
+  const accordion = document.querySelector('.faq');
+  if (!accordion) return
+
+  document.querySelectorAll('.faq__head').forEach(item => {
+    if (!item.classList.contains('faq__head--link')) {
+      item.addEventListener('click', function () {
+        const parent = this.parentElement;
+        const isActive = parent.classList.contains("active");
+
+        document.querySelectorAll(".faq__item").forEach(item => {
+          item.classList.remove("active");
+        });
+
+        if (!isActive) {
+          parent.classList.add("active");
+        }
+      });
+    }
+  });
+
+}
 
 function fadeInSections() {
   const sections = document.querySelectorAll('.animate-fade');
