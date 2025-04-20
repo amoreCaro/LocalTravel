@@ -1,5 +1,8 @@
 @use "../helpers/variables" as vars;
 .tour {
+    &__points {
+        margin-bottom: 20px;
+    }
   &__point {
     display: flex;
     justify-content: space-between;
