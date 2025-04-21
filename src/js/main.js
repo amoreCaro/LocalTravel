@@ -144,21 +144,21 @@ function fancyboxInit() {
 
   icons.forEach((icon, index) => {
     icon.addEventListener('click', (e) => {
-      e.preventDefault(); 
+      e.preventDefault();
 
       Fancybox.show(fancyboxItems, {
         startIndex: index,
-        loop: true, 
+        loop: true,
         buttons: [
-          "zoom",        
-          "slideShow",   
+          "zoom",
+          "slideShow",
           "fullScreen",
-          "download",    
-          "thumbs",    
-          "close"    
+          "download",
+          "thumbs",
+          "close"
         ],
         thumbs: {
-          autoStart: true, 
+          autoStart: true,
         },
       });
     });
@@ -405,9 +405,13 @@ const pointSlider = new Swiper('.point__slider', {
   },
 });
 
+// Function to handle navigation
 function navigateToLocation(event) {
-  const targetElement = event.target; // Get the clicked element
-  const locationId = targetElement.dataset.locationId; // Get the location ID from the clicked element
+
+  const targetElement = event.target.closest('.tour__point');
+  if (!targetElement) return;
+
+  const locationId = targetElement.dataset.locationId;
 
   if (locationId) {
     window.location.href = `/location-${locationId}.html`;
@@ -416,9 +420,15 @@ function navigateToLocation(event) {
   }
 }
 
-// Add an event listener to the parent element (or the whole document if necessary)
-document.addEventListener('click', function(event) {
-  // Check if the clicked element or any of its parents has the data-location-id attribute
+document.querySelector('.tour__points').addEventListener('click', function (event) {
+
+  if (event.target.closest('.tour__point')) {
+    navigateToLocation(event);
+  }
+});
+
+document.addEventListener('click', function (event) {
+
   if (event.target.closest('[data-location-id]')) {
     navigateToLocation(event);
   }
