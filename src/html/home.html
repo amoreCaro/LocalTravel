@@ -52,7 +52,7 @@
                 </div>
                 <div class="route__app">
                     <div class="points">
-                        <div class="point__item point-0 active">
+                        <div class="point__item point-0 active" data-point="1">
                             <div class="point__heading">
                                 <h2>ТОЧКА 1</h2>
                             </div>
@@ -362,9 +362,12 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <button class="point__button btn btn-primary h-full h-bg green">
+                                    <button id="start-button" 
+                                            class="point__button btn btn-primary h-full h-bg green" 
+                                            data-location-id="1" 
+                                            onclick="navigateToLocation(this)">
                                         <span>почати</span>
-                                    </button> 
+                                    </button>              
                                 </div>
                             </div>
                         </div>

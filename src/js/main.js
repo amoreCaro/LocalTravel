@@ -405,6 +405,26 @@ const pointSlider = new Swiper('.point__slider', {
   },
 });
 
+function navigateToLocation(event) {
+  const targetElement = event.target; // Get the clicked element
+  const locationId = targetElement.dataset.locationId; // Get the location ID from the clicked element
+
+  if (locationId) {
+    window.location.href = `/location-${locationId}.html`;
+  } else {
+    console.warn('Location ID not found on clicked element');
+  }
+}
+
+// Add an event listener to the parent element (or the whole document if necessary)
+document.addEventListener('click', function(event) {
+  // Check if the clicked element or any of its parents has the data-location-id attribute
+  if (event.target.closest('[data-location-id]')) {
+    navigateToLocation(event);
+  }
+});
+
+
 document.addEventListener('DOMContentLoaded', function () {
   // headerFixed();
   // headerMobile();
@@ -420,4 +440,7 @@ document.addEventListener('DOMContentLoaded', function () {
   setupNavigationWithSlideNumber('#nextBtn', '#prevBtn', '.point__item', 'active', '.current-slide');
   countPointItems();
   updateTotalSlides();
+  navigateToLocation();
+
+
 });
