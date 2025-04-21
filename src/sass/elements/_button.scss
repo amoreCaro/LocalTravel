@@ -30,10 +30,18 @@
   gap: 12px;
   max-width: 130px;
   width: 100%;
+
   &:hover {
-    background-color:rgb(243, 238, 238);
+    background-color: $primary;
+    color: $white;
+
+    svg path {
+      fill: $white !important;
+    }
   }
 }
+
+
 .btn-primary {
   span {
     color: white;
