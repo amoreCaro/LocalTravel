@@ -67,29 +67,7 @@
 
 
 
-// function fancyboxInit() {
-//   // Check if the slider exists
-//   const slider = document.querySelector('.point__slider');
-//   if (!slider) return;
 
-//   // Select all elements with data-fancybox="gallery"
-//   const fancyboxLinks = slider.querySelectorAll('[data-fancybox="gallery"]');
-//   if (fancyboxLinks.length > 0) {
-//     Fancybox.bind(fancyboxLinks, {
-//       loop: true,
-//     });
-//   }
-
-//   // Add event listeners to slider icons
-//   const icons = slider.querySelectorAll('.slider__icon');
-//   icons.forEach((icon, index) => {
-//     icon.addEventListener('click', () => {
-//       // Find the associated <a> element and trigger a click on it
-//       const correspondingLink = slider.querySelectorAll('[data-fancybox="gallery"]')[index];
-//       correspondingLink.click();
-//     });
-//   });
-// }
 
 // function headerMenu() {
 //   const btnMenu = document.querySelector('.header__button-menu');
@@ -129,7 +107,7 @@
 //     document.querySelector('.header__wrapper').classList.remove('active');
 //   });
 // }
-function fancyboxInit() {
+function fancyboxInit() { 
   const slider = document.querySelector('.point__slider');
   if (!slider) return;
 
@@ -137,7 +115,7 @@ function fancyboxInit() {
 
   // Збираємо всі посилання на зображення та підписи в масив
   const fancyboxItems = Array.from(icons).map((icon) => ({
-    src: icon.getAttribute('href'),
+    src: icon.getAttribute('data-src'),  // Using data-src instead of href
     caption: icon.getAttribute('data-caption'),
     type: 'image',
   }));
@@ -160,10 +138,20 @@ function fancyboxInit() {
         thumbs: {
           autoStart: true,
         },
+        afterLoad: (fancybox) => {
+          // Знайти зображення і застосувати стиль після завантаження
+          const image = fancybox.slides[fancybox.currentIndex].querySelector('img');
+          if (image) {
+            image.style.width = '80vw'; // 80% від ширини екрану
+            image.style.height = 'auto'; // Зберігаємо пропорції висоти
+          }
+        }
       });
     });
   });
 }
+
+
 
 function sliderSwipers() {
   const label = document.querySelector('.hero__label');

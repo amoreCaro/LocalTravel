@@ -183,6 +183,16 @@
   width: 100%;
   pointer-events: none;
 }
+.fancybox__slide .fancybox__content {
+  max-width: 80% !important;
+  height: auto !important;
+}
+
+.fancybox__image {
+  width: 100% !important;
+  height: auto !important;
+  object-fit: contain;
+}
 
 @media (max-width: 768px) {
   .swiper-slide-number {
