@@ -144,28 +144,26 @@ function fancyboxInit() {
 
   icons.forEach((icon, index) => {
     icon.addEventListener('click', (e) => {
-      e.preventDefault(); // Запобігаємо стандартному поведінці
+      e.preventDefault(); 
 
       Fancybox.show(fancyboxItems, {
         startIndex: index,
-        loop: true, // Увімкнути цикл
+        loop: true, 
         buttons: [
-          "zoom",        // Кнопка масштабування
-          "slideShow",   // Кнопка слайд-шоу
-          "fullScreen",  // Кнопка на весь екран
-          "download",    // Кнопка для завантаження
-          "thumbs",      // Кнопка для мініатюр
-          "close"        // Кнопка для закриття
+          "zoom",        
+          "slideShow",   
+          "fullScreen",
+          "download",    
+          "thumbs",    
+          "close"    
         ],
         thumbs: {
-          autoStart: true, // Автоматично показувати мініатюри
+          autoStart: true, 
         },
       });
     });
   });
 }
-
-
 
 function sliderSwipers() {
   const label = document.querySelector('.hero__label');
@@ -376,6 +374,23 @@ function setupNavigationWithSlideNumber(nextSelector, prevSelector, itemSelector
 
   updateSlideNumber($items.index($items.filter('.' + activeClass)));
 }
+function countPointItems() {
+  const points = document.querySelector('.points');
+  if (!points) return 0;
+
+  const items = points.querySelectorAll('.point__item');
+  return items.length;
+}
+function updateTotalSlides() {
+  const totalSlidesElement = document.querySelector('.total-slides');
+  const count = countPointItems();
+
+  if (totalSlidesElement) {
+    totalSlidesElement.textContent = count;
+  }
+}
+
+
 
 const pointSlider = new Swiper('.point__slider', {
   slidesPerView: 'auto',
@@ -403,4 +418,6 @@ document.addEventListener('DOMContentLoaded', function () {
   helperCollapse();
   initMap();
   setupNavigationWithSlideNumber('#nextBtn', '#prevBtn', '.point__item', 'active', '.current-slide');
+  countPointItems();
+  updateTotalSlides();
 });
