@@ -20,8 +20,8 @@
       outline: none;
       box-shadow: none;
     }
-    &:first-child{
-    border-top: 1px solid $light-gray;
+    &:first-child {
+      border-top: 1px solid $light-gray;
     }
     &:not(:last-child) {
       margin-bottom: 10px;
@@ -84,12 +84,10 @@
   &__item.active {
     .faq__head {
       span {
-        // color: $blue;
-      }
-      path {
-        // fill: $blue;
+        color: $primary;
       }
     }
+
     .faq__content {
       opacity: 1;
       z-index: 10;
@@ -97,9 +95,14 @@
       transition: 0.3s ease;
       padding: 32px 0;
     }
+
     .faq__icon {
       svg {
         transform: rotate(270deg);
+      }
+
+      path {
+        stroke: $primary;
       }
     }
   }
