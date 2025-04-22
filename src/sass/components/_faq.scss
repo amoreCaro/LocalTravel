@@ -3,6 +3,8 @@
   justify-content: center;
   align-items: center;
   width: 100%;
+  padding-top: 20px;
+  padding-bottom: 30px;
   &__item {
     display: flex;
     justify-content: space-between;
@@ -31,10 +33,10 @@
       transition: 0.3s ease;
     }
     p {
-      font-size: 1rem;
-      line-height: 130%;
-      font-weight: 300;
-      color: #787878;
+        font-size: 16px;
+        line-height: 32px;
+        font-weight: 500;
+        color: #787878;
     }
   }
   &__head {
@@ -70,7 +72,6 @@
     z-index: -1;
     height: 0;
     transition: 0.1s ease;
-    max-width: 90%;
     a {
       border-bottom: 1px solid black;
       &:hover {

@@ -1,3 +1,58 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Page List</title>
+  <link rel="stylesheet" href="../css/main.min.css">
+</head>
+
+<body>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const linksArray = [
+        { link: 'ListLocations', text: 'Список локацій' },
+        { link: 'LocationDetail', text: 'Деталі локації' },
+        { link: 'location-1', text: 'Локація 1' },
+        { link: 'location-2', text: 'Локація 2' },
+        { link: 'location-3', text: 'Локація 3' },
+        { link: 'ui', text: 'Інтерфейс' }
+      ];
+
+      const container = document.querySelector('.pagelist__items');
+      if (!container) return;
+
+      linksArray.forEach((item, index) => {
+        const linkElement = document.createElement('a');
+        linkElement.href = `${item.link}.html`;
+        linkElement.className = "pagelist__item";
+        linkElement.dataset.name = item.link;
+
+        linkElement.innerHTML = `
+          <span class="pagelist__item__count">${index + 1}</span>
+          <p class="pagelist__item__text">${item.text}</p>
+        `;
+
+        container.appendChild(linkElement);
+      });
+    });
+  </script>
+
+  <div class="pagelist">
+    <div class="pagelist__header">
+      <h1>Туристичний маршрут</h1>
+    </div>
+    <div class="pagelist__content">
+      <div class="pagelist__container">
+        <div class="pagelist__items"></div>
+      </div>
+    </div>
+    <div class="pagelist__footer">
+      <div class="pagelist__footer-logo"></div>
+    </div>
+  </div>
+</body>
+</html> -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,41 +64,37 @@
 
 <body>
     <script>
-        
         document.addEventListener("DOMContentLoaded", () => {
-            const linksArray = [
-                'home',
-                'PageRoutes',
-                'location-1',
-                'location-2',
-                'location-3',
-                'ui'
-            ];
-            const container = document.querySelector('.pagelist__items');
-            
-            if (!container) return;
-            
-            linksArray.forEach((link, index) => {
-                const linkElement = document.createElement('a');
-                linkElement.href = `${link}.html`;
-                linkElement.className = "pagelist__item";
-                linkElement.dataset.name = link;
-                
-                linkElement.innerHTML = `
-                    <span class="pagelist__item__count">${index + 1}</span>
-                    <span class="pagelist__item__title">${link}</span>
-                `;
-                
-                container.appendChild(linkElement);
-            });
+          const linksArray = [
+            { link: 'ListLocations', text: 'Page - List Locations' },
+            { link: 'LocationDetail', text: 'Page - Location Detail' },
+            { link: 'routes', text: 'Page - Routes' },
+            { link: 'ui', text: 'Page - UI' }
+          ];
+      
+          const container = document.querySelector('.pagelist__items');
+          if (!container) return;
+      
+          linksArray.forEach((item, index) => {
+            const linkElement = document.createElement('a');
+            linkElement.href = `${item.link}.html`;
+            linkElement.className = "pagelist__item";
+            linkElement.dataset.name = item.link;
+      
+            linkElement.innerHTML = `
+              <span class="pagelist__item__count">${index + 1}</span>
+              <span class="pagelist__item__title">${item.text}</span>
+            `;
+      
+            container.appendChild(linkElement);
+          });
         });
-
-
-    </script>
+      </script>
+      
 
      <div class="pagelist">
         <div class="pagelist__header">
-            <h1>Туристичний марщрут</h1>
+            <h1>Туристичний маршрут</h1>
         </div>
         <div class="pagelist__content">
             <div class="pagelist__container">

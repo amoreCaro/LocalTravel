@@ -69,17 +69,23 @@ body {
   overflow-x: hidden;
   color: $text;
   background-color: #f8f9fc;
+
 }
 .main {
-  width: 100%;
+  // width: 100%;
+  // max-width: 768px;
+  // margin: 0 auto;
 }
 .wrapper {
+  position: relative;
   width: 100%;
+  max-width: 465px;
   min-height: 100vh;
+  margin: 0 auto;
 }
 
 .container {
-  max-width: 1160px;
+
   width: 100%;
   // border: 1px solid red;
   margin: 0 auto;
@@ -106,10 +112,13 @@ body::-webkit-scrollbar-track {
     margin: 0 auto;
   }
 }
+audio , video {
+  width: 100%;
+}
 
 @media (max-width: 1240px) {
   .section {
-    max-width: 87%;
+    // max-width: 87%;
   }
 
   .page__wrapper {
@@ -124,7 +133,7 @@ body::-webkit-scrollbar-track {
     -webkit-tap-highlight-color: transparent;
   }
   .section {
-    max-width: 100%;
+    // max-width: 100%;
   }
 
   .container {

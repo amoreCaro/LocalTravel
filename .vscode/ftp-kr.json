@@ -1,0 +1,18 @@
+{
+    "host": "46.254.107.98",
+    "username": "fastuser",
+    "password": "OncF5rsDKVjqe",
+    "remotePath": "/www/travel.wp-dev.pp.ua/wp-content/themes/custom-theme/assets",
+    "protocol": "ftp",
+    "port": 0,
+    "fileNameEncoding": "utf8",
+    "autoUpload": true,
+    "autoDelete": true,
+    "autoDownload": true,
+    "ignore": [
+        ".git",
+        "/.vscode",
+        "/.DS_Store",
+        "node_modules"
+    ]
+}

@@ -18,11 +18,15 @@
 }
 .point__heading {
     margin-bottom: 20px;
+    text-transform: uppercase;
+    &--centered {
+      text-align: center;
+    }
 }
 .point__item.active {
-  display: block;
-  height: 382px;
-  width: 100%;
+    display: block;
+    width: 100%;
+    height: auto;
 }
 .point__button {
   margin-bottom: 20px !important;

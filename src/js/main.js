@@ -106,16 +106,15 @@
 //     document.querySelector('.header__actions').classList.remove('active');
 //     document.querySelector('.header__wrapper').classList.remove('active');
 //   });
-// }
+// } 
 function fancyboxInit() { 
   const slider = document.querySelector('.point__slider');
   if (!slider) return;
 
   const icons = slider.querySelectorAll('.slider__icon a');
 
-  // Збираємо всі посилання на зображення та підписи в масив
   const fancyboxItems = Array.from(icons).map((icon) => ({
-    src: icon.getAttribute('data-src'),  // Using data-src instead of href
+    src: icon.getAttribute('href'),
     caption: icon.getAttribute('data-caption'),
     type: 'image',
   }));
@@ -139,11 +138,12 @@ function fancyboxInit() {
           autoStart: true,
         },
         afterLoad: (fancybox) => {
-          // Знайти зображення і застосувати стиль після завантаження
           const image = fancybox.slides[fancybox.currentIndex].querySelector('img');
           if (image) {
-            image.style.width = '80vw'; // 80% від ширини екрану
-            image.style.height = 'auto'; // Зберігаємо пропорції висоти
+            image.style.maxWidth = '80vw';  // Adjust to 80% of the viewport width
+            image.style.maxHeight = '80vh'; // Adjust to 80% of the viewport height
+            image.style.width = 'auto';     // Ensure aspect ratio is maintained
+            image.style.height = 'auto';    // Ensure aspect ratio is maintained
           }
         }
       });
@@ -318,9 +318,10 @@ function helperCollapse() {
     }
   });
 }
-
-function initMap() {
+// Make initMap globally accessible
+window.initMap = function () {
   const location = { lat: 49.8397, lng: 24.0297 };
+
   const map = new google.maps.Map(document.getElementById("map"), {
     center: location,
     zoom: 13,
@@ -330,7 +331,22 @@ function initMap() {
     position: location,
     map: map,
   });
+};
+
+// Example event handler fix
+function navigateToLocation(event) {
+  const target = event?.target;
+  if (!target) return;
+
+  const lat = parseFloat(target.dataset.lat);
+  const lng = parseFloat(target.dataset.lng);
+
+  if (!isNaN(lat) && !isNaN(lng)) {
+    // Do something with lat/lng
+    console.log("Navigating to:", lat, lng);
+  }
 }
+
 
 function setupNavigationWithSlideNumber(nextSelector, prevSelector, itemSelector, activeClass, currentSlideSelector) {
   const $items = $(itemSelector);
@@ -378,8 +394,6 @@ function updateTotalSlides() {
   }
 }
 
-
-
 const pointSlider = new Swiper('.point__slider', {
   slidesPerView: 'auto',
   spaceBetween: 16,
@@ -392,33 +406,22 @@ const pointSlider = new Swiper('.point__slider', {
     forceToAxis: true,
   },
 });
-
-// Function to handle navigation
 function navigateToLocation(event) {
-
   const targetElement = event.target.closest('.tour__point');
   if (!targetElement) return;
 
   const locationId = targetElement.dataset.locationId;
 
   if (locationId) {
-    window.location.href = `/location-${locationId}.html`;
+    window.location.href = `https://travel.wp-dev.pp.ua/wp-content/themes/custom-theme/assets/src/html/location-${locationId}.html`;
   } else {
     console.warn('Location ID not found on clicked element');
   }
 }
 
-document.querySelector('.tour__points').addEventListener('click', function (event) {
-
-  if (event.target.closest('.tour__point')) {
-    navigateToLocation(event);
-  }
-});
-
 document.addEventListener('click', function (event) {
-
-  if (event.target.closest('[data-location-id]')) {
-    navigateToLocation(event);
+  if (event.target.closest('.tour__point')) {
+    navigateToLocation(event); // event is passed properly here
   }
 });
 
@@ -439,6 +442,5 @@ document.addEventListener('DOMContentLoaded', function () {
   countPointItems();
   updateTotalSlides();
   navigateToLocation();
-
 
 });

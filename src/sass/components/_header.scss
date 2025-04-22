@@ -5,14 +5,12 @@
   z-index: 100;
   width: 100%;
   padding: 20px;
-  transition: position 1s ease-in;
-
+  transition: position 1s ease-in;  
   &__wrapper {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center; 
-    // gap: 40px;
   }
   &__buttons {
     display: flex;
