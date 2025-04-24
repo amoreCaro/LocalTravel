@@ -107,131 +107,6 @@
 //     document.querySelector('.header__wrapper').classList.remove('active');
 //   });
 // } 
-function fancyboxInit() { 
-  const slider = document.querySelector('.point__slider');
-  if (!slider) return;
-
-  const icons = slider.querySelectorAll('.slider__icon a');
-
-  const fancyboxItems = Array.from(icons).map((icon) => ({
-    src: icon.getAttribute('href'),
-    caption: icon.getAttribute('data-caption'),
-    type: 'image',
-  }));
-
-  icons.forEach((icon, index) => {
-    icon.addEventListener('click', (e) => {
-      e.preventDefault();
-
-      Fancybox.show(fancyboxItems, {
-        startIndex: index,
-        loop: true,
-        buttons: [
-          "zoom",
-          "slideShow",
-          "fullScreen",
-          "download",
-          "thumbs",
-          "close"
-        ],
-        thumbs: {
-          autoStart: true,
-        },
-        afterLoad: (fancybox) => {
-          const image = fancybox.slides[fancybox.currentIndex].querySelector('img');
-          if (image) {
-            image.style.maxWidth = '80vw';  // Adjust to 80% of the viewport width
-            image.style.maxHeight = '80vh'; // Adjust to 80% of the viewport height
-            image.style.width = 'auto';     // Ensure aspect ratio is maintained
-            image.style.height = 'auto';    // Ensure aspect ratio is maintained
-          }
-        }
-      });
-    });
-  });
-}
-
-
-
-function sliderSwipers() {
-  const label = document.querySelector('.hero__label');
-  const title = document.querySelector('.hero__title h1');
-  if (label && title) {
-    title.appendChild(label);
-  }
-  if (document.querySelector('.hero__slider-swiper')) {
-
-    const imageswiper = new Swiper('.hero__slider-swiper', {
-      slidesPerView: 1,
-      loop: true,
-      autoplay: {
-        delay: 3000,
-        reverseDirection: false,
-      },
-      speed: 1000,
-      effect: "slide",
-      allowTouchMove: false,
-      navigation: {
-        nextEl: '.next',
-        prevEl: '.prev',
-      }
-    });
-
-    const textSwiper = new Swiper('.hero__box-swiper', {
-      effect: 'fade',
-      loop: true,
-      autoplay: {
-        delay: 3000,
-        reverseDirection: false,
-      },
-      slidesPerView: 1,
-      speed: 1000,
-      allowTouchMove: false,
-    });
-
-    document.querySelector('.next').addEventListener('click', function () {
-      imageswiper.slideNext();
-      textSwiper.slideNext();
-      this.classList.add('active');
-      document.querySelector('.prev').classList.remove('active');
-    });
-
-    document.querySelector('.prev').addEventListener('click', function () {
-      imageswiper.slidePrev();
-      textSwiper.slidePrev();
-      this.classList.add('active');
-      document.querySelector('.next').classList.remove('active');
-    });
-
-  }
-  if (document.querySelector('.article__slider')) {
-    new Swiper('.article__slider', {
-      slidesPerView: 3,
-      loopAdditionalSlides: 3,
-      speed: 1600,
-      spaceBetween: 40,
-      navigation: {
-        nextEl: '.next',
-        prevEl: '.prev',
-      },
-      breakpoints: {
-        320: {
-          slidesPerView: 1,
-        },
-        768: {
-          slidesPerView: 1,
-        },
-        1024: {
-          slidesPerView: 2,
-        },
-        1280: {
-          slidesPerView: 3,
-        }
-      }
-    });
-
-  }
-}
 
 function accordion() {
   const accordion = document.querySelector('.accordion');
@@ -276,6 +151,51 @@ function faq() {
 
 }
 
+function fancyboxInit() {
+  const slider = document.querySelector('.point__slider');
+  if (!slider) return;
+
+  const icons = slider.querySelectorAll('.slider__icon a, .point__icon a');
+
+  const fancyboxItems = Array.from(icons).map((icon) => ({
+    src: icon.getAttribute('href'),
+    caption: icon.getAttribute('data-caption'),
+    type: 'image',
+  }));
+
+  icons.forEach((icon, index) => {
+    icon.addEventListener('click', (e) => {
+      e.preventDefault();
+
+      Fancybox.show(fancyboxItems, {
+        startIndex: index,
+        loop: true,
+        buttons: [
+          "zoom",
+          "slideShow",
+          "fullScreen",
+          "download",
+          "thumbs",
+          "close"
+        ],
+        thumbs: {
+          autoStart: true,
+        },
+        afterLoad: (fancybox) => {
+          const image = fancybox.slides[fancybox.currentIndex].querySelector('img');
+          if (image) {
+            image.style.maxWidth = '80vw';  
+            image.style.maxHeight = '80vh'; 
+            image.style.width = 'auto';     
+            image.style.height = 'auto';
+          }
+        }
+      });
+    });
+  });
+}
+
+
 function fadeInSections() {
   const sections = document.querySelectorAll('.animate-fade');
 
@@ -292,7 +212,7 @@ function fadeInSections() {
   }
 
   window.addEventListener('scroll', checkFadeIn);
-  window.addEventListener('load', checkFadeIn); // Запускаємо при завантаженні сторінки
+  window.addEventListener('load', checkFadeIn);
 }
 
 function helperCollapse() {
@@ -332,21 +252,6 @@ window.initMap = function () {
     map: map,
   });
 };
-
-// Example event handler fix
-// function navigateToLocation(event) {
-//   const target = event?.target;
-//   if (!target) return;
-
-//   const lat = parseFloat(target.dataset.lat);
-//   const lng = parseFloat(target.dataset.lng);
-
-//   if (!isNaN(lat) && !isNaN(lng)) {
-//     // Do something with lat/lng
-//     console.log("Navigating to:", lat, lng);
-//   }
-// }
-
 
 function setupNavigationWithSlideNumber(nextSelector, prevSelector, itemSelector, activeClass, currentSlideSelector) {
   const $items = $(itemSelector);
@@ -422,17 +327,15 @@ function initPlacesSlider() {
   });
 }
 
-
-
 function initPlacesItemToggle() {
-  // Вибираємо елементи з двома класами places__slide та swiper-slide
+
   const items = document.querySelectorAll(".places__slide, .swiper-slide");
 
   items.forEach(item => {
     item.addEventListener("click", () => {
-      // Видаляємо клас active у всіх елементів
+
       items.forEach(i => i.classList.remove("active"));
-      // Додаємо клас active до того, на який клікнули
+
       item.classList.add("active");
     });
   });
@@ -444,17 +347,14 @@ function initPlacesItemToggle() {
 
   items.forEach(item => {
     item.addEventListener("click", () => {
-      // Remove 'active' from all
       items.forEach(i => i.classList.remove("active"));
-      // Add 'active' to clicked
+
       item.classList.add("active");
 
-      // Get data from clicked item
       const title = item.getAttribute("data-title");
       const distance = item.getAttribute("data-distance");
       const time = item.getAttribute("data-time");
 
-      // Update .places__details content
       if (details) {
         details.innerHTML = `
           <p>${title}</p>
@@ -469,18 +369,13 @@ function initPlacesItemToggle() {
 }
 function initBackButton() {
   $('.header__back').on('click', function () {
-      window.history.back();
+    window.history.back();
   });
 }
 
 
 document.addEventListener('DOMContentLoaded', function () {
-  // headerFixed();
-  // headerMobile();
-  // headerMenu();
-  // tabs();
   fadeInSections();
-  sliderSwipers();
   initPlacesSlider();
   accordion();
   fancyboxInit();
@@ -490,6 +385,6 @@ document.addEventListener('DOMContentLoaded', function () {
   setupNavigationWithSlideNumber('#nextBtn', '#prevBtn', '.point__item', 'active', '.current-slide');
   countPointItems();
   updateTotalSlides();
-  initPlacesItemToggle(); 
+  initPlacesItemToggle();
   initBackButton();
 });
