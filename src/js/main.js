@@ -381,7 +381,7 @@ document.addEventListener('DOMContentLoaded', function () {
   fancyboxInit();
   faq();
   helperCollapse();
-  initMap();
+  // initMap();
   setupNavigationWithSlideNumber('#nextBtn', '#prevBtn', '.point__item', 'active', '.current-slide');
   countPointItems();
   updateTotalSlides();
