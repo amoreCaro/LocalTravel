@@ -18,7 +18,7 @@
     margin-bottom: 10px;
 
     h2 {
-      font-weight: 500;
+      font-weight: 600;
       font-size: 20px;
       line-height: 1.2;
       color: #0e121a;
@@ -60,10 +60,12 @@
   &__slide {
     cursor: pointer;
     outline: none;
+
     &.active {
       .places__image {
         border: 4px solid #2a55fa;
         border-radius: 8px;
+        transition: 0.4s;
       }
 
       .places__text {
@@ -73,7 +75,8 @@
   }
 
   &__image {
-    width: 100px;
+    max-width: 100px;
+    width: 100%;
     height: 100px;
     margin-bottom: 10px;
 

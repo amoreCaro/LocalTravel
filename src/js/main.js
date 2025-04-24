@@ -425,6 +425,20 @@ function initPlacesSlider() {
 
 
 function initPlacesItemToggle() {
+  // Вибираємо елементи з двома класами places__slide та swiper-slide
+  const items = document.querySelectorAll(".places__slide, .swiper-slide");
+
+  items.forEach(item => {
+    item.addEventListener("click", () => {
+      // Видаляємо клас active у всіх елементів
+      items.forEach(i => i.classList.remove("active"));
+      // Додаємо клас active до того, на який клікнули
+      item.classList.add("active");
+    });
+  });
+}
+
+function initPlacesItemToggle() {
   const items = document.querySelectorAll(".places__slide");
   const details = document.querySelector(".places__details");
 
@@ -453,7 +467,11 @@ function initPlacesItemToggle() {
     });
   });
 }
-
+function initBackButton() {
+  $('.header__back').on('click', function () {
+      window.history.back();
+  });
+}
 
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -463,7 +481,7 @@ document.addEventListener('DOMContentLoaded', function () {
   // tabs();
   fadeInSections();
   sliderSwipers();
-  initPlacesSlider(); // ✅ Corrected
+  initPlacesSlider();
   accordion();
   fancyboxInit();
   faq();
@@ -473,4 +491,5 @@ document.addEventListener('DOMContentLoaded', function () {
   countPointItems();
   updateTotalSlides();
   initPlacesItemToggle(); 
+  initBackButton();
 });
