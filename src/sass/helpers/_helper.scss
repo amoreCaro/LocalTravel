@@ -112,7 +112,7 @@
 .h-bg.green {
   background-color: $primary;
   &:hover {
-    background-color: $green-hover;
+    background-color: $green-hover !important;
   }
 }
 .h-bg.black {

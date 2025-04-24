@@ -407,7 +407,10 @@ const pointSlider = new Swiper('.point__slider', {
   },
 });
 function initPlacesSlider() {
-  return new Swiper('.places__slider', {
+  const slider = document.querySelector('.places__slider');
+  if (!slider) return;
+
+  return new Swiper(slider, {
     slidesPerView: 3,
     spaceBetween: 10,
     pagination: {
@@ -420,16 +423,33 @@ function initPlacesSlider() {
 }
 
 
+
 function initPlacesItemToggle() {
-  // Вибираємо елементи з двома класами places__slide та swiper-slide
-  const items = document.querySelectorAll(".places__slide, .swiper-slide");
+  const items = document.querySelectorAll(".places__slide");
+  const details = document.querySelector(".places__details");
 
   items.forEach(item => {
     item.addEventListener("click", () => {
-      // Видаляємо клас active у всіх елементів
+      // Remove 'active' from all
       items.forEach(i => i.classList.remove("active"));
-      // Додаємо клас active до того, на який клікнули
+      // Add 'active' to clicked
       item.classList.add("active");
+
+      // Get data from clicked item
+      const title = item.getAttribute("data-title");
+      const distance = item.getAttribute("data-distance");
+      const time = item.getAttribute("data-time");
+
+      // Update .places__details content
+      if (details) {
+        details.innerHTML = `
+          <p>${title}</p>
+          <div class="places__info">
+            <span>${distance}</span>
+            <li>${time}</li>
+          </div>
+        `;
+      }
     });
   });
 }
@@ -443,7 +463,7 @@ document.addEventListener('DOMContentLoaded', function () {
   // tabs();
   fadeInSections();
   sliderSwipers();
-  initPlacesSlider();
+  initPlacesSlider(); // ✅ Corrected
   accordion();
   fancyboxInit();
   faq();
