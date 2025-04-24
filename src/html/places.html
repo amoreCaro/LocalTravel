@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, width=device-width">
+    <title>Home</title>
+    <!-- Fancybox -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css">
+    <link rel="stylesheet" href="../css/swiper-bundle.css">
+    <link rel="stylesheet" href="../css/main.min.css">
+</head>
+<body>
+    
+    <div class="wrapper">
+        <header class="header">
+            <div class="header__wrapper">
+                <button class="header__back btn btn-icon btn-primary h-bg green">
+                    <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M18.75 7.5L11.25 15L18.75 22.5" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>                                    
+                </button>
+                <div class="header__buttons">
+                    <button class="header__menu btn btn-icon btn-primary  h-bg h-border">
+                        <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M5 15H25M5 7.5H25M5 22.5H25" stroke="#0E121A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>                                       
+                    </button>
+                </div>
+
+            </div>
+        </header>
+        <main class="main">
+          <div class="route">
+            <div class="route__wrapper">
+              <div id="map" class="route__map"></div>
+              <div class="route__app">
+                <div class="places">
+                  <div class="places__item">
+                    <div class="places__item-wrapper">
+                
+                      <!-- Новий BEM-блок, що обгортає текст і слайдер -->
+                      <div class="places__content">
+                        <div class="places__heading">
+                          <h2>Заклади харчування</h2>
+                        </div>
+                        <div class="places__details">
+                          <p>McDonalds</p>
+                          <div class="places__info">
+                            <span>500 м</span>
+                            <li>3 хв 17 сек</li>
+                          </div>
+                        </div>
+                
+                        <div class="places__slider swiper">
+                          <div class="places__wrapper swiper-wrapper">
+                
+                            <div class="places__slide swiper-slide">
+                              <div class="places__image">
+                                <img src="../images/kfc.png" alt="KFC" />
+                              </div>
+                              <div class="places__text">
+                                <p>KFC</p>
+                              </div>
+                            </div>
+                
+                            <div class="places__slide swiper-slide">
+                              <div class="places__image">
+                                <img src="../images/kfc.png" alt="KFC" />
+                              </div>
+                              <div class="places__text">
+                                <p>KFC</p>
+                              </div>
+                            </div>
+
+                            <div class="places__slide swiper-slide">
+                              <div class="places__image">
+                                <img src="../images/kfc.png" alt="KFC" />
+                              </div>
+                              <div class="places__text">
+                                <p>KFC</p>
+                              </div>
+                            </div>
+
+                            <div class="places__slide swiper-slide">
+                              <div class="places__image">
+                                <img src="../images/kfc.png" alt="KFC" />
+                              </div>
+                              <div class="places__text">
+                                <p>KFC</p>
+                              </div>
+                            </div>
+                    
+                
+                          </div>
+                        </div>
+                      </div>
+                      <!-- /places__content -->
+                      <div class="button__wrapper button__wrapper--fixed">
+                        <button class="btn btn-primary h-full h-bg green">
+                          <span>Прокласти маршрут</span>
+                        </button>  
+                    </div>
+                   
+                    
+                     
+                    </div>
+
+                  </div>
+                </div>
+                
+              </div>
+            </div>
+          </div>
+        </main>
+        
+        <footer class="footer">
+            <div class="footer__wrapper">
+            
+            </div>
+        </footer>
+    </div>
+
+    <a href="../html/index.html" class="page-back page-back--inside"><span>&#8592;</span> Back </a>
+    <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
+    <script src="../js/libs/swiper.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Google Maps Api -->
+    <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDFwjJfB26UkXdTN_48PWsu34gkhGI_o44&callback=initMap"></script>
+
+    <script src="../js/main.js"></script>
+</body>
+</html>
+
+      
+
+

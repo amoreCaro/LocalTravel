@@ -334,18 +334,18 @@ window.initMap = function () {
 };
 
 // Example event handler fix
-function navigateToLocation(event) {
-  const target = event?.target;
-  if (!target) return;
+// function navigateToLocation(event) {
+//   const target = event?.target;
+//   if (!target) return;
 
-  const lat = parseFloat(target.dataset.lat);
-  const lng = parseFloat(target.dataset.lng);
+//   const lat = parseFloat(target.dataset.lat);
+//   const lng = parseFloat(target.dataset.lng);
 
-  if (!isNaN(lat) && !isNaN(lng)) {
-    // Do something with lat/lng
-    console.log("Navigating to:", lat, lng);
-  }
-}
+//   if (!isNaN(lat) && !isNaN(lng)) {
+//     // Do something with lat/lng
+//     console.log("Navigating to:", lat, lng);
+//   }
+// }
 
 
 function setupNavigationWithSlideNumber(nextSelector, prevSelector, itemSelector, activeClass, currentSlideSelector) {
@@ -406,33 +406,44 @@ const pointSlider = new Swiper('.point__slider', {
     forceToAxis: true,
   },
 });
-function navigateToLocation(event) {
-  const targetElement = event.target.closest('.tour__point');
-  if (!targetElement) return;
-
-  const locationId = targetElement.dataset.locationId;
-
-  if (locationId) {
-    window.location.href = `https://travel.wp-dev.pp.ua/wp-content/themes/custom-theme/assets/src/html/location-${locationId}.html`;
-  } else {
-    console.warn('Location ID not found on clicked element');
-  }
+function initPlacesSlider() {
+  return new Swiper('.places__slider', {
+    slidesPerView: 3,
+    spaceBetween: 10,
+    pagination: {
+      el: '.places__pagination',
+      clickable: false,
+    },
+    grabCursor: true,
+    touchEventsTarget: 'container',
+  });
 }
 
-document.addEventListener('click', function (event) {
-  if (event.target.closest('.tour__point')) {
-    navigateToLocation(event); // event is passed properly here
-  }
-});
+
+function initPlacesItemToggle() {
+  // Вибираємо елементи з двома класами places__slide та swiper-slide
+  const items = document.querySelectorAll(".places__slide, .swiper-slide");
+
+  items.forEach(item => {
+    item.addEventListener("click", () => {
+      // Видаляємо клас active у всіх елементів
+      items.forEach(i => i.classList.remove("active"));
+      // Додаємо клас active до того, на який клікнули
+      item.classList.add("active");
+    });
+  });
+}
+
 
 
 document.addEventListener('DOMContentLoaded', function () {
   // headerFixed();
   // headerMobile();
-  fadeInSections();
   // headerMenu();
-  sliderSwipers();
   // tabs();
+  fadeInSections();
+  sliderSwipers();
+  initPlacesSlider();
   accordion();
   fancyboxInit();
   faq();
@@ -441,6 +452,5 @@ document.addEventListener('DOMContentLoaded', function () {
   setupNavigationWithSlideNumber('#nextBtn', '#prevBtn', '.point__item', 'active', '.current-slide');
   countPointItems();
   updateTotalSlides();
-  navigateToLocation();
-
+  initPlacesItemToggle(); 
 });
