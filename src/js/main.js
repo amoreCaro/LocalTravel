@@ -354,7 +354,7 @@ function initPlacesItemToggle() {
 function initPlacesItemToggle() {
   const items = document.querySelectorAll(".places__slide");
   const details = document.querySelector(".places__details");
-  const buttonWrapper = document.querySelector(".button__wrapper--fixed");
+  const buttonWrapper = document.querySelector(".places__button");
 
   items.forEach(item => {
     item.addEventListener("click", () => {
@@ -375,7 +375,7 @@ function initPlacesItemToggle() {
         `;
       }
 
-      // показати кнопку
+      // Показати кнопку
       if (buttonWrapper) {
         buttonWrapper.classList.add("active");
       }

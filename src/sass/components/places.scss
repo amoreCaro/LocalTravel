@@ -2,8 +2,18 @@
   padding-top: 20px;
   box-shadow: 0 0 25px rgba(0, 0, 0, 0.35);
   border-radius: 16px 16px 0 0;
+  position: absolute; 
+  top: 39%; 
+  left: 50%; 
+  transform: translateX(-50%); 
+  max-width: 468px; 
+  height: auto;
 
-  &__item-wrapper {
+  &__wrapper {
+
+  }
+
+  &__container {
     position: relative;
   }
 
@@ -11,7 +21,7 @@
     padding-left: 20px;
     display: block;
     width: 100%;
-    height: auto; // забезпечує автоматичну висоту
+    height: auto;
   }
 
   &__heading {
@@ -62,19 +72,24 @@
     padding-bottom: 20px;
   }
 
+  &__slider-wrapper {
+    // просто обгортка слайдів
+  }
+
   &__slide {
     cursor: pointer;
     outline: none;
 
     &.active {
       padding-bottom: 120px;
+
       .places__image {
         border: 4px solid #2a55fa;
         border-radius: 8px;
         transition: 0.4s;
       }
 
-      .places__text {
+      .places__caption {
         color: #0e121a;
       }
     }
@@ -96,7 +111,7 @@
     }
   }
 
-  &__text {
+  &__caption {
     font-size: 16px;
     color: #585858;
   }
