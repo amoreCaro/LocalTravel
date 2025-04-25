@@ -432,6 +432,25 @@ function sidebarLogic() {
   });
 }
 
+function popupLogic() {
+  const openPopup = $('.openPopup');
+  const closePopup = $('.popup__close');
+
+  openPopup.on('click', function () {
+    const target = $(this).data('popupTarget');
+    const $popup = $(target);
+
+    if ($popup.length) {
+      $popup.addClass('active');
+      overlay.addClass('active');
+    }
+  });
+
+  closePopup.on('click', function () {
+    $(this).closest('.popup').removeClass('active');
+    overlay.removeClass('active');
+  });
+}
 
 document.addEventListener('DOMContentLoaded', function () {
   fadeInSections();
@@ -447,4 +466,5 @@ document.addEventListener('DOMContentLoaded', function () {
   initPlacesItemToggle();
   initBackButton();
   sidebarLogic();
+  popupLogic();
 });
