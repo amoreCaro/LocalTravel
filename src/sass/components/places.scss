@@ -11,7 +11,7 @@
     padding-left: 20px;
     display: block;
     width: 100%;
-    height: auto;
+    height: auto; // забезпечує автоматичну висоту
   }
 
   &__heading {
@@ -36,6 +36,11 @@
       font-size: 14px;
       line-height: 1.2;
       color: #585858;
+
+      span {
+        color: #0e121a;
+        font-weight: 600;
+      }
     }
   }
 
@@ -54,7 +59,7 @@
 
   &__slider {
     position: relative;
-    padding-bottom: 120px;
+    padding-bottom: 20px;
   }
 
   &__slide {
@@ -62,6 +67,7 @@
     outline: none;
 
     &.active {
+      padding-bottom: 120px;
       .places__image {
         border: 4px solid #2a55fa;
         border-radius: 8px;
@@ -79,6 +85,8 @@
     width: 100%;
     height: 100px;
     margin-bottom: 10px;
+    border: 4px solid #d7cfcf;
+    border-radius: 8px;
 
     img {
       width: 100%;
@@ -91,5 +99,13 @@
   &__text {
     font-size: 16px;
     color: #585858;
+  }
+
+  &__button {
+    display: none;
+
+    &.active {
+      display: block;
+    }
   }
 }

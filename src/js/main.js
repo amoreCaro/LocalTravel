@@ -184,14 +184,24 @@ function fancyboxInit() {
         afterLoad: (fancybox) => {
           const image = fancybox.slides[fancybox.currentIndex].querySelector('img');
           if (image) {
-            image.style.maxWidth = '80vw';  
-            image.style.maxHeight = '80vh'; 
-            image.style.width = 'auto';     
+            image.style.maxWidth = '80vw';
+            image.style.maxHeight = '80vh';
+            image.style.width = 'auto';
             image.style.height = 'auto';
           }
         }
       });
     });
+  });
+
+  // Додаємо обробку фокусу перед закриттям Fancybox
+  document.addEventListener('close.fancybox', () => {
+    const activeEl = document.activeElement;
+    const container = document.querySelector('.fancybox__container');
+
+    if (container && container.contains(activeEl)) {
+      activeEl.blur(); // Прибираємо фокус, щоб уникнути конфлікту з aria-hidden
+    }
   });
 }
 
@@ -344,11 +354,11 @@ function initPlacesItemToggle() {
 function initPlacesItemToggle() {
   const items = document.querySelectorAll(".places__slide");
   const details = document.querySelector(".places__details");
+  const buttonWrapper = document.querySelector(".button__wrapper--fixed");
 
   items.forEach(item => {
     item.addEventListener("click", () => {
       items.forEach(i => i.classList.remove("active"));
-
       item.classList.add("active");
 
       const title = item.getAttribute("data-title");
@@ -364,9 +374,15 @@ function initPlacesItemToggle() {
           </div>
         `;
       }
+
+      // показати кнопку
+      if (buttonWrapper) {
+        buttonWrapper.classList.add("active");
+      }
     });
   });
 }
+
 function initBackButton() {
   $('.header__back').on('click', function () {
     window.history.back();
