@@ -205,7 +205,6 @@ function fancyboxInit() {
   });
 }
 
-
 function fadeInSections() {
   const sections = document.querySelectorAll('.animate-fade');
 
@@ -392,16 +391,13 @@ function sidebarLogic() {
   const sidebar = $('.sidebar');
   const openModal = $('.openModal');
   const closeModal = $('.closeModal');
-  const overlay = $('.overlay');
+
 
   const hasChildren = $('.has-children');
   const items = $('.dropdown__items');
   const back = $('.dropdown__item-back');
 
-  if (overlay.length === 0) {
-    console.error('Overlay element not found');
-    return;
-  }
+
 
   openModal.on('click', function () {
     const sidebarId = $(this).data('sidebarTarget');
@@ -414,9 +410,7 @@ function sidebarLogic() {
   });
 
   closeModal.on('click', function () {
-    const overlayId = '.overlay';
     sidebar.removeClass('active');
-    $(overlayId).removeClass('active');
   });
 
   hasChildren.on('click', function () {
