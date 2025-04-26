@@ -442,13 +442,13 @@ function popupLogic() {
 
     if ($popup.length) {
       $popup.addClass('active');
-      overlay.addClass('active');
+      // overlay.addClass('active');
     }
   });
 
   closePopup.on('click', function () {
     $(this).closest('.popup').removeClass('active');
-    overlay.removeClass('active');
+    // overlay.removeClass('active');
   });
 }
 
