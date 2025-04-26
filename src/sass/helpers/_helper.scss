@@ -255,6 +255,14 @@
   transform: translate(-350px, 0px);
   transition: transform 0.3s;
 }
+.h-animation-right {
+  transform: translate(100%, 0px);
+  transition: transform 0.3s;
+  opacity: 0;
+  &.active {
+    transform: translate(0%, 0px);
+  }
+}
 
 @media (max-width: 768px) {
   .swiper-slide-number {

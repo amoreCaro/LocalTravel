@@ -79,6 +79,14 @@
       }
     }
   }
+  // .faq__content.h-animation-right {
+  //   opacity: 0;
+  //   z-index: 10;
+  //   height: auto;
+  //   transition: 0.3s ease;
+  //   padding: 32px 0;
+  //   // height: 100vh;
+  // }
   &__item.active {
     .faq__head {
       span {
@@ -97,13 +105,18 @@
       padding: 32px 0;
 
     }
-
+    .faq__content.h-animation-right {
+      opacity: 1;
+      z-index: 10;
+      height: auto;
+      transition: 0.3s ease;
+      padding: 32px 0;
+      // height: 100vh;
+    }
     .faq__icon {
       svg {
         transform: rotate(180deg);
       }
-
-
     }
   }
 }

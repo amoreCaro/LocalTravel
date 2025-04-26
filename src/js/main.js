@@ -130,7 +130,7 @@ function accordion() {
 
 function faq() {
   const accordion = document.querySelector('.faq');
-  if (!accordion) return
+  if (!accordion) return;
 
   document.querySelectorAll('.faq__head').forEach(item => {
     if (!item.classList.contains('faq__head--link')) {
@@ -144,12 +144,18 @@ function faq() {
 
         if (!isActive) {
           parent.classList.add("active");
+
+          // Якщо у елементу є клас h-animation-right, додаємо клас active
+          const animationItem = parent.querySelector('.h-animation-right');
+          if (animationItem) {
+            animationItem.classList.add('active');
+          }
         }
       });
     }
   });
-
 }
+
 
 function fancyboxInit() {
   const slider = document.querySelector('.point__slider');
