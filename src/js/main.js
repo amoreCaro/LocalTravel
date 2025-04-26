@@ -128,12 +128,12 @@ function accordion() {
   });
 }
 
-function faq() {
-  const accordion = document.querySelector('.faq');
+function collapse() {
+  const accordion = document.querySelector('.collapse');
   if (!accordion) return;
 
-  document.querySelectorAll('.faq__head').forEach(item => {
-    if (!item.classList.contains('faq__head--link')) {
+  document.querySelectorAll('.collapse__head').forEach(item => {
+    if (!item.classList.contains('collapse__head--link')) {
       item.addEventListener('click', function () {
         const parent = this.parentElement;
         const isActive = parent.classList.contains("active");
@@ -144,10 +144,10 @@ function faq() {
           const animationItem = parent.querySelector('.h-animation-right');
           if (animationItem) {
             animationItem.classList.remove('active');
-            document.querySelector('.faq-overlay')?.classList.remove('active');
+            document.querySelector('.collapse-overlay')?.classList.remove('active');
           }
         } else {
-          document.querySelectorAll(".faq__item").forEach(item => {
+          document.querySelectorAll(".collapse__item").forEach(item => {
             item.classList.remove("active");
             const animationItem = item.querySelector('.h-animation-right');
             if (animationItem) {
@@ -159,7 +159,7 @@ function faq() {
           const animationItem = parent.querySelector('.h-animation-right');
           if (animationItem) {
             animationItem.classList.add('active');
-            document.querySelector('.faq-overlay')?.classList.add('active');
+            document.querySelector('.collapse-overlay')?.classList.add('active');
           }
         }
       });
@@ -473,7 +473,7 @@ document.addEventListener('DOMContentLoaded', function () {
   initPlacesSlider();
   accordion();
   fancyboxInit();
-  faq();
+  collapse();
   helperCollapse();
   // initMap();
   setupNavigationWithSlideNumber('#nextBtn', '#prevBtn', '.point__item', 'active', '.current-slide');

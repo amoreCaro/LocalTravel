@@ -1,4 +1,4 @@
-.faq {
+.collapse {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -78,12 +78,12 @@
       box-shadow: none;
     }
 
-    .faq__right {
+    .collapse__right {
       display: flex;
       align-items: center;
     }
 
-    .faq__icon {
+    .collapse__icon {
       height: 30px;
       width: 30px;
       display: flex;
@@ -92,7 +92,7 @@
     }
   }
 
-  .faq__icon-static {
+  .collapse__icon-static {
     margin-right: 15px;
   }
 
@@ -115,7 +115,7 @@
 
   &__item.active {
     
-    .faq__head {
+    .collapse__head {
       span {
         color: $primary;
       }
@@ -126,7 +126,7 @@
 
     }
 
-    .faq__content {
+    .collapse__content {
       opacity: 1;
       z-index: 10;
       height: auto;
@@ -134,7 +134,7 @@
       padding: 20px;
     }
 
-    .faq__icon {
+    .collapse__icon {
       svg {
         transform: rotate(180deg);
       }
@@ -142,45 +142,3 @@
   }
 }
 
-.faq__content.h-animation-right {
-  opacity: 0;
-  z-index: -1;
-  height: 0;
-  transform: translate(100%, 0);
-  transition: transform 0.3s ease, opacity 0.3s ease, height 0.3s ease;
-  padding: 20px;
-  width: 100%;
-  position: fixed;
-  top: 30%;
-  left: 0;
-  background-color: #fff;
-  height: 70% !important;
-  overflow-y: auto;
-  z-index: 10;
-  box-shadow: 0px 0px 25px 0px #00000026;
-  border-radius: 16px 16px 0px 0px;
-  
-  &.active {
-    opacity: 1;
-    transform: translate(0%, 0);
-    height: auto;
-  }
-}
-.faq-overlay {
-  overflow: hidden;
-  position: fixed;
-  top: 0;  
-  left: 0;
-  width: 100%;
-  height: 100%;  
-  background: rgba(0, 0, 0, 0.5);
-  z-index: 1000;
-  pointer-events: none;
-  transition: opacity .2s ease;
-  opacity: 0;
-
-  &.active {
-    opacity: 1;
-    pointer-events: all;
-  }
-}  
