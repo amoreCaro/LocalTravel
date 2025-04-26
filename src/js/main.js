@@ -248,7 +248,7 @@ function helperCollapse() {
     }
   });
 }
-// Make initMap globally accessible
+
 window.initMap = function () {
   const location = { lat: 49.8397, lng: 24.0297 };
 

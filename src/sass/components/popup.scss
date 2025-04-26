@@ -1,0 +1,36 @@
+.popup {
+  position: fixed;
+  background: white;
+  z-index: 1000;
+  transition:
+    transform 0.3s ease,
+    opacity 0.3s ease;
+  opacity: 0;
+
+  &--bottom {
+    left: 50% !important;
+    bottom: -40%;
+    transform: translateX(-50%) translateY(100%) !important;
+    height: 300px;
+    max-width: 465px;
+    width: 100%;
+    opacity: 0;
+
+    &.active {
+      transform: translateX(-50%) translateY(0%) !important ;
+      opacity: 1;
+    }
+  }
+
+  &--left {
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 300px;
+    transform: translateX(-100%);
+    &.active {
+      transform: translate(0, 0);
+      opacity: 1;
+    }
+  }
+}
