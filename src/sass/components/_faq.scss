@@ -18,8 +18,22 @@
     padding: 10px 0;
     cursor: pointer;
     border-bottom: 1px solid $light-gray;
-    width: 100%; /* Ensure the item takes the full width */
+    width: 100%;
     box-sizing: border-box;
+    
+    svg {
+      color: $primary;
+      transition: 0.4s all;
+    }
+    &:hover {
+      span {
+        color: $primary;
+      }
+  
+      path {
+        stroke: $primary;
+      }
+    }
 
     &:focus-visible {
       outline: none;
@@ -91,7 +105,7 @@
     padding: 0;
 
     a {
-      border-bottom: 1px solid black;
+      border-bottom: 1px solid #0E121A;
 
       &:hover {
         border-color: transparent;
@@ -109,6 +123,7 @@
       path {
         stroke: $primary;
       }
+
     }
 
     .faq__content {
@@ -144,8 +159,6 @@
   z-index: 10;
   box-shadow: 0px 0px 25px 0px #00000026;
   border-radius: 16px 16px 0px 0px;
-
-
   
   &.active {
     opacity: 1;

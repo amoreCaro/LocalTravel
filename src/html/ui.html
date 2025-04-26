@@ -290,7 +290,7 @@
                       <div class="faq__list">
                         <!-- FAQ Item 1 -->
                         <div class="faq__item">
-                            <button type="button" class="faq__head">
+                            <button type="button" class="faq__head openPopup" data-popup-target="#collapse-1">
                                 <div class="faq__right">
                                   <span class="faq__icon-static">
                                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -312,17 +312,12 @@
                                     </svg>  
                                 </span>
                               </button>
-                          <div class="faq__content h-animation-right">
-                            <p>
-                              Великий тінистий ландшафтний парк зі ставком, прогулянковими доріжками та тропічною оранжереєю.
-                              Великий тінистий ландшафтний парк зі ставком, прогулянковими доріжками та тропічною оранжереєю.
-                            </p>
-                          </div>
+                      
                         </div>
                         
                         <!-- FAQ Item 2 -->
                         <div class="faq__item">
-                          <button type="button" class="faq__head">
+                          <button type="button" class="faq__head openPopup" data-popup-target="#collapse-2">
                             <div class="faq__right">
                               <span class="faq__icon-static">
                                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -343,12 +338,12 @@
                             </div>
                             <span class="faq__icon">
                                 <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M11.25 22.5L18.75 15L11.25 7.5" stroke="#0E121A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>
+                                <path d="M11.25 22.5L18.75 15L11.25 7.5" stroke="#0E121A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
 
                             </span>
                           </button>
-                          <div class="faq__content h-animation-right">
+                          <div id="collapse-2" class="faq__content h-animation-right " >
                             <audio controls>
                               <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="audio/ogg" />
                               <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="audio/mpeg" />
@@ -359,7 +354,7 @@
                   
                         <!-- FAQ Item 3 -->
                         <div class="faq__item">
-                          <button type="button" class="faq__head">
+                          <button type="button" class="faq__head openPopup " data-popup-target="#collapse-3">
                             <div class="faq__right">
                               <span class="faq__icon-static">
                                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -382,7 +377,7 @@
                                 </svg>
                             </span>
                           </button>
-                          <div class="faq__content h-animation-right">
+                          <div id="collapse-3" class="faq__content h-animation-right popup--right" >
                             <!-- Additional content here -->
                           </div>
                         </div>
@@ -617,6 +612,12 @@
                
             </div>
         </div>
+        <div id="collapse-1" class="faq__content popup--right" >
+            <p>
+              Великий тінистий ландшафтний парк зі ставком, прогулянковими доріжками та тропічною оранжереєю.
+              Великий тінистий ландшафтний парк зі ставком, прогулянковими доріжками та тропічною оранжереєю.
+            </p>
+          </div>
         <div id="popup-left" class="popup popup--left">
             <button class="popup__close">Закрити</button>
             <p>Ви знаходитесь:</p>
@@ -703,24 +704,7 @@
                   </span>
                   Де я на карті
                 </a>
-                <ul class="submenu h-animation-left">
-                  <li>
-                    <a href="#back" class="dropdown__item-back">
-                      <svg width="21" height="21" viewBox="0 0 21 21" fill="none">
-                        <path
-                          fill-rule="evenodd"
-                          clip-rule="evenodd"
-                          d="M12.6086 15.9419C12.3645 16.186 11.9688 16.186 11.7247 15.9419L6.72471 10.9419C6.48064 10.6979 6.48064 10.3021 6.72471 10.0581L11.7247 5.05806C11.9688 4.81398 12.3645 4.81398 12.6086 5.05806C12.8527 5.30214 12.8527 5.69786 12.6086 5.94194L8.05054 10.5L12.6086 15.0581C12.8527 15.3021 12.8527 15.6979 12.6086 15.9419Z"
-                          fill="#71717E"
-                        />
-                      </svg>
-                      Back
-                    </a>
-                  </li>
-                  <li><a href="#" class="submenu-item">Sub item</a></li>
-                  <li><a href="#" class="submenu-item">Sub item</a></li>
-                  <li><a href="#" class="submenu-item">Sub item</a></li>
-                </ul>
+              
               </li>
   
               <li class="item has-children">
@@ -748,21 +732,7 @@
                   </span>
                   Точки маршрута
                 </a>
-                <ul class="submenu h-animation-left">
-                  <div class="subMenuTitle">
-                    <a href="#back" class="dropdown__item dropdown__item-back">
-                      <svg width="21" height="21" viewBox="0 0 21 21" fill="none">
-                        <path
-                          fill-rule="evenodd"
-                          clip-rule="evenodd"
-                          d="M12.6086 15.9419C12.3645 16.186 11.9688 16.186 11.7247 15.9419L6.72471 10.9419C6.48064 10.6979 6.48064 10.3021 6.72471 10.0581L11.7247 5.05806C11.9688 4.81398 12.3645 4.81398 12.6086 5.05806C12.8527 5.30214 12.8527 5.69786 12.6086 5.94194L8.05054 10.5L12.6086 15.0581C12.8527 15.3021 12.8527 15.6979 12.6086 15.9419Z"
-                          fill="#71717E"
-                        />
-                      </svg>
-                      Back
-                    </a>
-                  </div>
-                </ul>
+               
               </li>
   
               <li class="item has-children">
@@ -790,21 +760,7 @@
                   </span>
                   Заклади харчування
                 </a>
-                <ul class="submenu h-animation-left">
-                  <div class="subMenuTitle">
-                    <a href="#back" class="dropdown__item dropdown__item-back">
-                      <svg width="21" height="21" viewBox="0 0 21 21" fill="none">
-                        <path
-                          fill-rule="evenodd"
-                          clip-rule="evenodd"
-                          d="M12.6086 15.9419C12.3645 16.186 11.9688 16.186 11.7247 15.9419L6.72471 10.9419C6.48064 10.6979 6.48064 10.3021 6.72471 10.0581L11.7247 5.05806C11.9688 4.81398 12.3645 4.81398 12.6086 5.05806C12.8527 5.30214 12.8527 5.69786 12.6086 5.94194L8.05054 10.5L12.6086 15.0581C12.8527 15.3021 12.8527 15.6979 12.6086 15.9419Z"
-                          fill="#71717E"
-                        />
-                      </svg>
-                      Back
-                    </a>
-                  </div>
-                </ul>
+            
               </li>
   
               <li class="item has-children">
@@ -825,24 +781,7 @@
                   </span>
                   Туалети
                 </a>
-                <ul class="submenu h-animation-left">
-                  <li>
-                    <a href="#back" class="dropdown__item-back">
-                      <svg width="21" height="21" viewBox="0 0 21 21" fill="none">
-                        <path
-                          fill-rule="evenodd"
-                          clip-rule="evenodd"
-                          d="M12.6086 15.9419C12.3645 16.186 11.9688 16.186 11.7247 15.9419L6.72471 10.9419C6.48064 10.6979 6.48064 10.3021 6.72471 10.0581L11.7247 5.05806C11.9688 4.81398 12.3645 4.81398 12.6086 5.05806C12.8527 5.30214 12.8527 5.69786 12.6086 5.94194L8.05054 10.5L12.6086 15.0581C12.8527 15.3021 12.8527 15.6979 12.6086 15.9419Z"
-                          fill="#71717E"
-                        />
-                      </svg>
-                      Back
-                    </a>
-                  </li>
-                  <li><a href="#" class="submenu-item">Sub item</a></li>
-                  <li><a href="#" class="submenu-item">Sub item</a></li>
-                  <li><a href="#" class="submenu-item">Sub item</a></li>
-                </ul>
+              
               </li>
   
               <li class="item has-children">
@@ -870,21 +809,7 @@
                   </span>
                   Укриття
                 </a>
-                <ul class="submenu h-animation-left">
-                  <div class="subMenuTitle">
-                    <a href="#back" class="dropdown__item dropdown__item-back">
-                      <svg width="21" height="21" viewBox="0 0 21 21" fill="none">
-                        <path
-                          fill-rule="evenodd"
-                          clip-rule="evenodd"
-                          d="M12.6086 15.9419C12.3645 16.186 11.9688 16.186 11.7247 15.9419L6.72471 10.9419C6.48064 10.6979 6.48064 10.3021 6.72471 10.0581L11.7247 5.05806C11.9688 4.81398 12.3645 4.81398 12.6086 5.05806C12.8527 5.30214 12.8527 5.69786 12.6086 5.94194L8.05054 10.5L12.6086 15.0581C12.8527 15.3021 12.8527 15.6979 12.6086 15.9419Z"
-                          fill="#71717E"
-                        />
-                      </svg>
-                      Back
-                    </a>
-                  </div>
-                </ul>
+              
               </li>
               <li class="item has-children">
                 <a href="#">
@@ -911,24 +836,7 @@
                   </span>
                   Місце для паркування
                 </a>
-                <ul class="submenu h-animation-left">
-                  <li>
-                    <a href="#back" class="dropdown__item-back">
-                      <svg width="21" height="21" viewBox="0 0 21 21" fill="none">
-                        <path
-                          fill-rule="evenodd"
-                          clip-rule="evenodd"
-                          d="M12.6086 15.9419C12.3645 16.186 11.9688 16.186 11.7247 15.9419L6.72471 10.9419C6.48064 10.6979 6.48064 10.3021 6.72471 10.0581L11.7247 5.05806C11.9688 4.81398 12.3645 4.81398 12.6086 5.05806C12.8527 5.30214 12.8527 5.69786 12.6086 5.94194L8.05054 10.5L12.6086 15.0581C12.8527 15.3021 12.8527 15.6979 12.6086 15.9419Z"
-                          fill="#71717E"
-                        />
-                      </svg>
-                      Back
-                    </a>
-                  </li>
-                  <li><a href="#" class="submenu-item">Sub item</a></li>
-                  <li><a href="#" class="submenu-item">Sub item</a></li>
-                  <li><a href="#" class="submenu-item">Sub item</a></li>
-                </ul>
+               
               </li>
   
               <li class="item has-children">
@@ -956,21 +864,7 @@
                   </span>
                   Зупинки громадського транспорту
                 </a>
-                <ul class="submenu h-animation-left">
-                  <div class="subMenuTitle">
-                    <a href="#back" class="dropdown__item dropdown__item-back">
-                      <svg width="21" height="21" viewBox="0 0 21 21" fill="none">
-                        <path
-                          fill-rule="evenodd"
-                          clip-rule="evenodd"
-                          d="M12.6086 15.9419C12.3645 16.186 11.9688 16.186 11.7247 15.9419L6.72471 10.9419C6.48064 10.6979 6.48064 10.3021 6.72471 10.0581L11.7247 5.05806C11.9688 4.81398 12.3645 4.81398 12.6086 5.05806C12.8527 5.30214 12.8527 5.69786 12.6086 5.94194L8.05054 10.5L12.6086 15.0581C12.8527 15.3021 12.8527 15.6979 12.6086 15.9419Z"
-                          fill="#71717E"
-                        />
-                      </svg>
-                      Back
-                    </a>
-                  </div>
-                </ul>
+              
               </li>
             </ul>
           </div>
