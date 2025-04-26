@@ -11,6 +11,12 @@
     width: 100%;
   }
 
+  h2 {
+    font-size: 48px;
+    margin-bottom: 25px;
+    color: $black;
+  }
+
   &__item {
     display: flex;
     justify-content: space-between;
@@ -144,18 +150,18 @@
 
   // ----- Popup inside Collapse -----
   &__popup {
-    position: fixed;  // змінили з absolute на fixed
+    position: fixed;  
     background: white;
-    z-index: 10000;  // підняти z-index, щоб перекривати всі елементи
+    z-index: 10000;  
     transition: transform 0.3s ease, opacity 0.3s ease;
     opacity: 0;
-    top: 0;  // розмістити зверху
-    left: 0;  // на всю ширину екрану
-    width: 100%;  // на всю ширину
-    height: 100%;  // на всю висоту
+    top: 0;  
+    left: 0;  
+    width: 100%;  
+    height: 100%; 
     display: flex;
     justify-content: center;
-    align-items: center;  // центрування контенту попапа
+    align-items: center;  
   
     &--right {
       transform: translateX(100%);
@@ -177,6 +183,4 @@
       }
     }
   }
-  
-  
 }

@@ -128,10 +128,11 @@ function accordion() {
   });
 }
 
-function collapse() {
+function collapse() { 
   const accordion = document.querySelector('.collapse');
   if (!accordion) return;
 
+  // Обробник для розкриття і приховування контенту при кліку на .collapse__head
   document.querySelectorAll('.collapse__head').forEach(item => {
     if (!item.classList.contains('collapse__head--link')) {
       item.addEventListener('click', function () {
@@ -165,10 +166,16 @@ function collapse() {
       });
     }
   });
+
+  document.querySelectorAll('.collapse__close-btn').forEach(button => {
+    button.addEventListener('click', function() {
+      const collapseContent = this.closest('.collapse__content');
+      if (collapseContent) {
+        collapseContent.classList.remove('active');
+      }
+    });
+  });
 }
-
-
-
 
 
 
@@ -451,7 +458,7 @@ function sidebarLogic() {
 function popupLogic() {
   const openPopup = $('.openPopup');
   const closePopup = $('.popup__close');
-
+  
   openPopup.on('click', function () {
     const target = $(this).data('popupTarget');
     const $popup = $(target);
@@ -466,7 +473,18 @@ function popupLogic() {
     $(this).closest('.popup').removeClass('active');
     // overlay.removeClass('active');
   });
+
+  // Close popup when clicking outside of it
+  $(document).on('click', function (e) {
+    const $popup = $('.popup.active');
+    
+    if ($popup.length && !$(e.target).closest('.popup').length && !$(e.target).closest('.openPopup').length) {
+      $popup.removeClass('active');
+      // overlay.removeClass('active');
+    }
+  });
 }
+
 
 document.addEventListener('DOMContentLoaded', function () {
   fadeInSections();
