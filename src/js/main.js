@@ -138,23 +138,39 @@ function faq() {
         const parent = this.parentElement;
         const isActive = parent.classList.contains("active");
 
-        document.querySelectorAll(".faq__item").forEach(item => {
-          item.classList.remove("active");
-        });
+        if (isActive) {
+          parent.classList.remove("active");
 
-        if (!isActive) {
+          const animationItem = parent.querySelector('.h-animation-right');
+          if (animationItem) {
+            animationItem.classList.remove('active');
+            document.querySelector('.faq-overlay')?.classList.remove('active');
+          }
+        } else {
+          document.querySelectorAll(".faq__item").forEach(item => {
+            item.classList.remove("active");
+            const animationItem = item.querySelector('.h-animation-right');
+            if (animationItem) {
+              animationItem.classList.remove('active');
+            }
+          });
+
           parent.classList.add("active");
-
-          // Якщо у елементу є клас h-animation-right, додаємо клас active
           const animationItem = parent.querySelector('.h-animation-right');
           if (animationItem) {
             animationItem.classList.add('active');
+            document.querySelector('.faq-overlay')?.classList.add('active');
           }
         }
       });
     }
   });
 }
+
+
+
+
+
 
 
 function fancyboxInit() {
