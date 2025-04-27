@@ -2,6 +2,8 @@
 
 .locations {
     display: flex;
+    position: relative;
+
   &__points {
     margin-bottom: 20px;
     height: 500px;
@@ -14,9 +16,12 @@
     align-items: center;
     padding: 10px 0px;
     border-bottom: 1px solid #e2e2e2;
-
     &:first-child {
       border-top: 1px solid #e2e2e2;
+    }
+    &:last-child {
+      margin-bottom: 90px;
+
     }
   }
   &__heading {
@@ -71,6 +76,10 @@
       height: 100%;
     }
   }
+  &__button {
+    max-width: 465px;
+    width: 100%;
+  }
 }
 
 .locations__item {
@@ -93,6 +102,12 @@
     width: 100%;
     height: auto;
     padding-top: 90px;
+    max-width: 465px;
+
+    // &--ui {
+    //   position: relative;
+    //   margin-top: 250px;
+    // }
 }
 
 .slider {
