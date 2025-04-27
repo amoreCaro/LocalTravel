@@ -29,6 +29,10 @@
   width: 100%;
   &:hover {
     background-color: $primary;
+    svg path {
+      // fill: $white !important;
+      stroke: white;
+    }
   }
 }
 
