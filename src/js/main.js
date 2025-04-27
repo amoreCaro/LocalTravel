@@ -485,20 +485,34 @@ function popupLogic() {
 
   closePopup.on('click', function () {
     $(this).closest('.popup').removeClass('active');
-    // overlay.removeClass('active');
+
   });
 
-  // Close popup when clicking outside of it
+
   $(document).on('click', function (e) {
     const $popup = $('.popup.active');
     
     if ($popup.length && !$(e.target).closest('.popup').length && !$(e.target).closest('.openPopup').length) {
       $popup.removeClass('active');
-      // overlay.removeClass('active');
+
     }
   });
 }
+function openCollapseIfRight() {
+  $('.collapse__head').on('click', function(e) {
+    if ($(this).hasClass('collapse--right')) {
+      $('#collapse-1').addClass('active');
+      e.stopPropagation();
+    }
+  });
 
+  $(document).on('click', function(e) {
+    var $collapseContent = $('#collapse-1');
+    if (!$collapseContent.is(e.target) && $collapseContent.has(e.target).length === 0) {
+      $collapseContent.removeClass('active');
+    }
+  });
+}
 
 document.addEventListener('DOMContentLoaded', function () {
   fadeInSections();
@@ -515,4 +529,5 @@ document.addEventListener('DOMContentLoaded', function () {
   initBackButton();
   sidebarLogic();
   popupLogic();
+  openCollapseIfRight();
 });
