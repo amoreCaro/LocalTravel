@@ -167,14 +167,28 @@ function collapse() {
     }
   });
 
-  document.querySelectorAll('.collapse__close-btn').forEach(button => {
+  document.querySelectorAll('.collapse__close-btn').forEach(button => { 
     button.addEventListener('click', function() {
       const collapseContent = this.closest('.collapse__content');
       if (collapseContent) {
         collapseContent.classList.remove('active');
       }
+  
+      const activeItem = document.querySelector('.collapse__item.active');
+      if (activeItem) {
+        activeItem.classList.remove('active');
+  
+        const activeIcon = activeItem.querySelector('.collapse__icon svg.active');
+        if (activeIcon) {
+          activeIcon.classList.remove('active');
+        }
+      }
+  
+      // Також можеш прибрати оверлей, якщо він є
+      document.querySelector('.collapse-overlay')?.classList.remove('active');
     });
   });
+  
 }
 
 
