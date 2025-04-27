@@ -108,6 +108,17 @@
 //   });
 // } 
 
+
+const swiper = new Swiper('.slider', {
+  loop: true, // увімкнути циклічний прокручування
+  slidesPerView: 1, // кількість слайдів, що відображаються одночасно
+  spaceBetween: 10, // відстань між слайдами
+  pagination: {
+    el: '.swiper-pagination', // вказуємо елемент для пагінації
+    clickable: true, // можливість кліку по пагінації
+  },
+});
+
 function accordion() {
   const accordion = document.querySelector('.accordion');
   if (!accordion) return
@@ -194,15 +205,16 @@ function collapse() {
 
 
 
-function fancyboxInit() {
-  const slider = document.querySelector('.point__slider');
-  if (!slider) return;
+function fancyboxInit(containerSelector = 'body') {
+  const container = document.querySelector(containerSelector);
+  if (!container) return;
 
-  const icons = slider.querySelectorAll('.slider__icon a, .point__icon a');
+  const icons = container.querySelectorAll('.slider__icon a, .point__icon a');
+  if (!icons.length) return;
 
   const fancyboxItems = Array.from(icons).map((icon) => ({
     src: icon.getAttribute('href'),
-    caption: icon.getAttribute('data-caption'),
+    caption: icon.getAttribute('data-caption') || '',
     type: 'image',
   }));
 
@@ -225,7 +237,7 @@ function fancyboxInit() {
           autoStart: true,
         },
         afterLoad: (fancybox) => {
-          const image = fancybox.slides[fancybox.currentIndex].querySelector('img');
+          const image = fancybox.slides[fancybox.currentIndex]?.$el?.querySelector('img');
           if (image) {
             image.style.maxWidth = '80vw';
             image.style.maxHeight = '80vh';
@@ -237,16 +249,16 @@ function fancyboxInit() {
     });
   });
 
-  // Додаємо обробку фокусу перед закриттям Fancybox
   document.addEventListener('close.fancybox', () => {
     const activeEl = document.activeElement;
     const container = document.querySelector('.fancybox__container');
 
     if (container && container.contains(activeEl)) {
-      activeEl.blur(); // Прибираємо фокус, щоб уникнути конфлікту з aria-hidden
+      activeEl.blur();
     }
   });
 }
+
 
 function fadeInSections() {
   const sections = document.querySelectorAll('.animate-fade');
@@ -351,18 +363,6 @@ function updateTotalSlides() {
   }
 }
 
-const pointSlider = new Swiper('.point__slider', '.location__slider', {
-  slidesPerView: 'auto',
-  spaceBetween: 16,
-  freeMode: true,
-  scrollbar: {
-    el: '.swiper-scrollbar',
-    draggable: true,
-  },
-  mousewheel: {
-    forceToAxis: true,
-  },
-});
 function initPlacesSlider() {
   const slider = document.querySelector('.places__slider');
   if (!slider) return;
@@ -381,7 +381,7 @@ function initPlacesSlider() {
 
 function initPlacesItemToggle() {
 
-  const items = document.querySelectorAll(".places__slide, .swiper-slide");
+  const items = document.querySelectorAll(".places__slide");
 
   items.forEach(item => {
     item.addEventListener("click", () => {

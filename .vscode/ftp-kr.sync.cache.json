@@ -1,0 +1,62 @@
+{
+  "ftp://fastuser@46.254.107.98": {
+    "www": {
+      "travel.wp-dev.pp.ua": {
+        "wp-content": {
+          "themes": {
+            "custom-theme": {
+              "assets": {
+                "dist": {},
+                ".DS_Store": {
+                  "type": "-",
+                  "size": 6148,
+                  "lmtime": 0,
+                  "modified": false
+                },
+                ".git": {},
+                "gulpfile.js": {
+                  "type": "-",
+                  "size": 1814,
+                  "lmtime": 0,
+                  "modified": false
+                },
+                "package.json": {
+                  "type": "-",
+                  "size": 731,
+                  "lmtime": 0,
+                  "modified": false
+                },
+                "package-lock.json": {
+                  "type": "-",
+                  "size": 798271,
+                  "lmtime": 0,
+                  "modified": false
+                },
+                "src": {
+                  "js": {
+                    "main.min.js": {
+                      "type": "-",
+                      "size": 6567,
+                      "lmtime": 1745771000200,
+                      "modified": false
+                    }
+                  },
+                  "css": {
+                    "main.min.css": {
+                      "type": "-",
+                      "size": 54797,
+                      "lmtime": 1745771038426,
+                      "modified": false
+                    }
+                  }
+                },
+                ".vscode": {}
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "$version": 1
+}
