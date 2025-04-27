@@ -27,7 +27,9 @@
                         <div class="ui__content__head">
                             <h4>Buttons</h4>
                         </div>
+                       
                         <div class="ui__group">
+                            
                             <button class="header__back btn btn-icon btn-primary h-bg green ">
                                 <svg
                                   width="30"
@@ -94,14 +96,18 @@
                             <span>почати</span>
                           </button>
                         </div>
-<!-- 
-                            <div class="button__wrapper button__wrapper--fixed">
-                                <button class="point__button btn btn-primary h-full h-bg green"
-                                        onclick="window.location.href='./routes.html'">
-                                    <span>ДИВИТИСЬ НА МАПІ</span>
+                        <div class="ui__content__item">
+                            <h4>Links</h4>
+                            <div class="button__wrapper button__wrapper--fixed ui__group">
+                                <button
+                                  class=" btn btn-primary h-full h-bg green"
+                                  onclick="window.location.href='./listLocations.html'"
+                                >
+                                  <span>почати</span>
                                 </button>
-                            </div> -->
-                  
+                              </div>
+                        </div>
+                        
                     </div>
                     <div class="ui__content__item">
                         <h4>Links</h4>
@@ -373,6 +379,9 @@
                         </div>
                     </div>
                 </div>
+                <div class="ui__content__head">
+                    <h4>Location slider</h4>
+                </div>
                   <div class="ui__group">
                     <div class="point__slider slider">
                     <div class="slider__wrapper swiper-wrapper">
@@ -599,8 +608,179 @@
                     <div class="slider__pagination swiper-pagination"></div>
                     </div> 
                   </div>
+                <div class="ui__group">
+                    <div class="ui__content__head">
+                        <h4>Page - List location</h4>
+                    </div>
+                    <div class="locations">
+                        <div class="locations__item location__item--full-height location-routes active">
+                        <div class="locations__heading locations__heading--centered ">
+                            <h1>Доступні маршрути</h1>
+                        </div>
+                        <div class="locations__points">
+                            <a class="locations__point" href="https://travel.wp-dev.pp.ua/wp-content/themes/custom-theme/assets/src/html/locationDetail.html">
+                            <div class="locations__text">
+                                <p>Стрийський парк</p>
+                                <div class="locations__stats">
+                                <span>5 км</span>
+                                <li>23 хв 50 сек</li>
+                                </div>
+                            </div>
+                            <div class="locations__img">
+                                <img src="../images/park.png" alt="">
+                            </div>
+                            </a>
+                        
+                            <a class="locations__point" href="https://travel.wp-dev.pp.ua/wp-content/themes/custom-theme/assets/src/html/locationDetail.html">
+                            <div class="locations__text">
+                                <p>Озеро</p>
+                                <div class="locations__stats">
+                                <span>5 км</span>
+                                <li>23 хв 50 сек</li>
+                                </div>
+                            </div>
+                            <div class="locations__img">
+                                <img src="../images/lake.png" alt="">
+                            </div>
+                            </a>
+                        
+                            <a class="locations__point" href="https://travel.wp-dev.pp.ua/wp-content/themes/custom-theme/assets/src/html/locationDetail.html">
+                            <div class="locations__text">
+                                <p>Спортмайданчик</p>
+                                <div class="locations__stats">
+                                <span>5 км</span>
+                                <li>23 хв 50 сек</li>
+                                </div>
+                            </div>
+                            <div class="locations__img">
+                                <img src="../images/sports_ground.png" alt="">
+                            </div>
+                            </a>
+                        
+                            <a class="locations__point" href="https://travel.wp-dev.pp.ua/wp-content/themes/custom-theme/assets/src/html/locationDetail.html">
+                            <div class="locations__text">
+                                <p>Стрийський парк</p>
+                                <div class="locations__stats">
+                                <span>3 км</span>
+                                <li>15 хв 10 сек</li>
+                                </div>
+                            </div>
+                            <div class="locations__img">
+                                <img src="../images/park.png" alt="">
+                            </div>
+                            </a>
+                        
+                            <a class="locations__point" href="https://travel.wp-dev.pp.ua/wp-content/themes/custom-theme/assets/src/html/locationDetail.html">
+                            <div class="locations__text">
+                                <p>Площа Ринок</p>
+                                <div class="locations__stats">
+                                <span>2 км</span>
+                                <li>10 хв 30 сек</li>
+                                </div>
+                            </div>
+                            <div class="locations__img">
+                                <img src="../images/park.png" alt="">
+                            </div>
+                            </a>
+                        </div>
+                        
+                        <div class="button__wrapper button__wrapper--fixed">
+                        <button class="point__button btn btn-primary h-full h-bg green"
+                            onclick="window.location.href='./routes.html'">
+                        <span>ДИВИТИСЬ НА МАПІ</span>
+                    </button>
+                    </div>
+                </div>
 
-               
+                    </div>
+                </div>
+               <div class="ui__group ui__group--fixed">
+                <div class="ui__content__head">
+                    <h4>Page - Places</h4>
+                </div>
+                <div class="places places__ui">
+                    <div class="places__wrapper">
+                      <div class="places__container">
+                        <div class="places__content">
+                          <div class="places__heading">
+                            <h2>Заклади харчування</h2>
+                          </div>
+                          <div class="places__details">
+                            <p>У радіусі 1 км: <span>4 ресторани</span></p>
+                            <div class="places__info">
+                              <span></span>
+                            </div>
+                          </div>
+                  
+                          <div class="places__slider swiper">
+                            <div class="places__slider-wrapper swiper-wrapper">
+                              <div
+                                class="places__slide swiper-slide"
+                                data-title="Mc Donalds"
+                                data-distance="150 м"
+                                data-time="1 хв 15 сек"
+                              >
+                                <div class="places__image">
+                                  <img src="../images/mcdonalds.png" alt="McDonalds" />
+                                </div>
+                                <div class="places__caption">
+                                  <p>Mc Donalds</p>
+                                </div>
+                              </div>
+                              <div
+                                class="places__slide swiper-slide"
+                                data-title="KFC"
+                                data-distance="300 м"
+                                data-time="2 хв 40 сек"
+                              >
+                                <div class="places__image">
+                                  <img src="../images/kfc.png" alt="KFC" />
+                                </div>
+                                <div class="places__caption">
+                                  <p>KFC</p>
+                                </div>
+                              </div>
+                              <div
+                                class="places__slide swiper-slide"
+                                data-title="KFC"
+                                data-distance="300 м"
+                                data-time="2 хв 10 сек"
+                              >
+                                <div class="places__image">
+                                  <img src="../images/kfc.png" alt="KFC" />
+                                </div>
+                                <div class="places__caption">
+                                  <p>KFC</p>
+                                </div>
+                              </div>
+                              <div
+                                class="places__slide swiper-slide"
+                                data-title="Pizza Day"
+                                data-distance="700 м"
+                                data-time="5 хв 10 сек"
+                              >
+                                <div class="places__image">
+                                  <img src="../images/PizzaDay.png" alt="PizzaDay" />
+                                </div>
+                                <div class="places__caption">
+                                  <p>PizzaDay</p>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                  
+                        <div class="places__button button__wrapper button__wrapper--fixed">
+                          <button class="btn btn-primary h-full h-bg green">
+                            <span>Прокласти маршрут</span>
+                          </button>
+                        </div>
+    
+                       
+                      </div>
+                    </div>
+                  </div>
+               </div>
 
                 
 

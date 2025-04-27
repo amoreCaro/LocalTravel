@@ -8,7 +8,9 @@
   transform: translateX(-50%); 
   max-width: 468px; 
   height: auto;
-
+&__ui {
+  position: relative;
+}
   &__wrapper {
 
   }
