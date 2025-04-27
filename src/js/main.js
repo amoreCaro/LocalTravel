@@ -194,16 +194,15 @@ function collapse() {
 
 
 
-function fancyboxInit(containerSelector = 'body') {
-  const container = document.querySelector(containerSelector);
-  if (!container) return;
+function fancyboxInit() {
+  const slider = document.querySelector('.point__slider');
+  if (!slider) return;
 
-  const icons = container.querySelectorAll('.slider__icon a, .point__icon a');
-  if (!icons.length) return;
+  const icons = slider.querySelectorAll('.slider__icon a, .point__icon a');
 
   const fancyboxItems = Array.from(icons).map((icon) => ({
     src: icon.getAttribute('href'),
-    caption: icon.getAttribute('data-caption') || '',
+    caption: icon.getAttribute('data-caption'),
     type: 'image',
   }));
 
@@ -226,7 +225,7 @@ function fancyboxInit(containerSelector = 'body') {
           autoStart: true,
         },
         afterLoad: (fancybox) => {
-          const image = fancybox.slides[fancybox.currentIndex]?.$el?.querySelector('img');
+          const image = fancybox.slides[fancybox.currentIndex].querySelector('img');
           if (image) {
             image.style.maxWidth = '80vw';
             image.style.maxHeight = '80vh';
@@ -238,16 +237,16 @@ function fancyboxInit(containerSelector = 'body') {
     });
   });
 
+  // Додаємо обробку фокусу перед закриттям Fancybox
   document.addEventListener('close.fancybox', () => {
     const activeEl = document.activeElement;
     const container = document.querySelector('.fancybox__container');
 
     if (container && container.contains(activeEl)) {
-      activeEl.blur();
+      activeEl.blur(); // Прибираємо фокус, щоб уникнути конфлікту з aria-hidden
     }
   });
 }
-
 
 function fadeInSections() {
   const sections = document.querySelectorAll('.animate-fade');
@@ -352,18 +351,7 @@ function updateTotalSlides() {
   }
 }
 
-const pointSlider = new Swiper('.point__slider', {
-  slidesPerView: 'auto',
-  spaceBetween: 16,
-  freeMode: true,
-  scrollbar: {
-    el: '.swiper-scrollbar',
-    draggable: true,
-  },
-  mousewheel: {
-    forceToAxis: true,
-  },
-});const locationSlider = new Swiper('.location__slider', {
+const pointSlider = new Swiper('.point__slider', '.location__slider', {
   slidesPerView: 'auto',
   spaceBetween: 16,
   freeMode: true,
@@ -375,7 +363,6 @@ const pointSlider = new Swiper('.point__slider', {
     forceToAxis: true,
   },
 });
-
 function initPlacesSlider() {
   const slider = document.querySelector('.places__slider');
   if (!slider) return;
