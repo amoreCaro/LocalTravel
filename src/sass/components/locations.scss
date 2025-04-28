@@ -3,7 +3,8 @@
 .locations {
     display: flex;
     position: relative;
-
+    max-width: 465px;
+    width: 100%;
   &__points {
     margin-bottom: 20px;
     height: 500px;
