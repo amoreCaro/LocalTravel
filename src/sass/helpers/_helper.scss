@@ -119,6 +119,9 @@
     background-color: $green-hover !important;
   }
 }
+.h-bg.gray {
+  background: #EEEEEE;
+}
 .h-bg.black {
   background-color: $black;
   &:hover {

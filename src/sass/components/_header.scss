@@ -4,13 +4,15 @@
   top: 0;
   z-index: 100;
   width: 100%;
-  padding: 20px;
+  padding: 10px;
   transition: position 1s ease-in;  
   &__wrapper {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center; 
+    padding: 10px;
+    border-radius: 16px;
   }
   &__buttons {
     display: flex;
@@ -28,5 +30,7 @@
       display: none;
     }
   }
+
+
 }
 

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, width=device-width">
+    <title>Home</title>
+    <!-- Fancybox -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css">
+    <link rel="stylesheet" href="../css/swiper-bundle.css">
+    <link rel="stylesheet" href="../css/main.min.css">
+</head>
+<body>
+    
+    <div class="wrapper">
+        <header class="header">
+            <div class="header__wrapper h-bg gray">
+                <button class="header__back btn btn-icon btn-primary h-bg green">
+                    <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M18.75 7.5L11.25 15L18.75 22.5" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>                                    
+                </button>
+                <div class="header__buttons">
+                    <button class="header__menu btn btn-icon btn-primary  h-bg">
+                        <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M5 15H25M5 7.5H25M5 22.5H25" stroke="#0E121A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>                                       
+                    </button>
+                </div>
+
+            </div>
+        </header>
+        <main class="main">
+          <div class="route">
+            <div class="route__wrapper">
+                <div class="route__app"> 
+                    <div class="error">
+                        <div class="error__content">
+                            <div class="error__image">
+                                <img src="../images/error.png" alt="">
+                            </div>
+                            <div class="error__text">
+                                <div class="error__heading">
+                                    <h2>Сталася помилка!</h2>
+                                </div>
+                                <div class="error__paragraph">
+                                    <p>Оновіть сторінку  або поверніться назад.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="button__wrapper button__wrapper--fixed h-bg gray">
+                            <button class=" btn btn-primary h-full h-bg green"
+                                onclick="window.location.href='./routes.html'">
+                                <span>назад</span>
+                            </button>
+                        </div>  
+                    </div>
+                </div>
+            </div>
+           
+            </div>
+          </div>
+        </main>
+        <footer class="footer">
+            <div class="footer__wrapper">
+            
+            </div>
+        </footer>
+    </div>
+
+    <a href="../html/index.html" class="page-back page-back--inside"><span>&#8592;</span> Back </a>
+    <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
+    <script src="../js/libs/swiper.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Google Maps Api -->
+    <script
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDFwjJfB26UkXdTN_48PWsu34gkhGI_o44&callback=initMap"
+    async
+    defer
+  ></script>
+  
+
+    <script src="../js/main.js"></script>
+</body>
+</html>
+
+      
+
+
